@@ -1,9 +1,9 @@
-
 :root {
-  --card-center-y-pc: 48vh;   /* Move up a bit */
+  --card-center-y-pc: 48vh;
   --card-center-y-mob: 42vh;
 }
 
+/* BODY/BACKGROUND */
 body {
   margin: 0;
   padding: 0;
@@ -17,21 +17,23 @@ body {
   overflow-x: hidden;
 }
 
+/* NAVIGATION BAR */
 .headbar {
   position: fixed;
-  top: 30px;
+  top: 0;
   left: 0;
   width: 100%;
   box-sizing: border-box;
   display: flex;
-  justify-content: flex-end; /* Left align the bar items */
+  justify-content: flex-end;
   gap: 34px;
-  padding: 30px 80px 0 0; /* Padding left for space from the edge *//* Top, right, bottom, left */
+  padding: 30px 80px 0 0; /* top right bottom left */
   z-index: 10;
   background: transparent;
   border-bottom-left-radius: 22px;
   transition: background 0.3s;
 }
+
 .headbar a {
   color: #fff;
   text-decoration: none;
@@ -45,6 +47,7 @@ body {
   box-shadow: 0 2px 16px 0 rgba(0,255,255,0.10);
   letter-spacing: 1px;
 }
+
 .headbar a:hover {
   background: rgba(0,0,0,0.55);
 }
@@ -62,6 +65,7 @@ body {
   }
 }
 
+/* WELCOME BOX with Glitch Effect */
 .welcomebox {
   position: absolute;
   left: 50%;
@@ -70,7 +74,7 @@ body {
   max-width: 440px;
   width: 92vw;
   min-width: 240px;
-  padding: 28px 24px 28px 24px;
+  padding: 44px 24px 28px 24px;
   background: rgba(25,30,40,0.38);
   border-radius: 26px;
   display: flex;
@@ -78,8 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  box-shadow: 
+  box-shadow:
     0 2px 32px 0 rgba(0,255,255,0.10),
     0 0 16px 3px rgba(0,255,255,0.22),
     0 4px 64px 0 rgba(0,0,0,0.28);
@@ -87,27 +90,10 @@ body {
   backdrop-filter: blur(15px) saturate(155%);
   -webkit-backdrop-filter: blur(15px) saturate(155%);
   overflow: hidden;
-  animation: hologlow 2.5s ease-in-out infinite alternate;
   z-index: 2;
 }
 
-@keyframes hologlow {
-  0% {
-    box-shadow:
-      0 2px 32px 0 rgba(0,255,255,0.14),
-      0 0 16px 3px rgba(0,255,255,0.2),
-      0 4px 64px 0 rgba(0,0,0,0.22);
-    border-color: rgba(0,255,255,0.5);
-  }
-  100% {
-    box-shadow:
-      0 2px 44px 0 rgba(0,255,255,0.24),
-      0 0 24px 6px rgba(0,255,255,0.35),
-      0 6px 80px 0 rgba(0,0,0,0.33);
-    border-color: rgba(0,255,180,0.85);
-  }
-}
-
+/* GLITCH EFFECT PSEUDO-ELEMENTS */
 .welcomebox::before,
 .welcomebox::after {
   content: "";
@@ -115,17 +101,55 @@ body {
   left: 0; top: 0; width: 100%; height: 100%;
   pointer-events: none;
   border-radius: 26px;
-  z-index: 1;
-}
-.welcomebox::before {
-  background: linear-gradient(120deg, rgba(0,255,255,0.10) 0%, rgba(255,255,255,0.07) 100%);
-  mix-blend-mode: lighten;
-}
-.welcomebox::after {
-  background: radial-gradient(circle at 80% 20%, rgba(0,255,255,0.07) 0%, transparent 60%);
+  z-index: 3;
+  opacity: 0.18;
   mix-blend-mode: lighten;
 }
 
+.welcomebox::before {
+  background: linear-gradient(90deg, transparent 50%, #01faff44 90%, transparent 100%);
+  transform: skewY(-2deg);
+  animation: glitchTop 2.2s infinite linear alternate;
+}
+
+.welcomebox::after {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 2px,
+      #01faff11 4px,
+      transparent 6px
+    ),
+    linear-gradient(90deg, transparent 70%, #ff00cc44 100%);
+  transform: skewY(1deg);
+  animation: glitchBottom 1.8s infinite linear alternate-reverse, scanlines 0.22s infinite steps(2);
+  opacity: 0.25;
+}
+
+@keyframes glitchTop {
+  0%   { clip-path: inset(0 0 90% 0); transform: translate(-2px, -2px) skewY(-2deg);}
+  20%  { clip-path: inset(0 0 80% 0); transform: translate(2px, 2px) skewY(-2deg);}
+  40%  { clip-path: inset(0 0 70% 0); transform: translate(-3px, 1px) skewY(-2deg);}
+  60%  { clip-path: inset(0 0 60% 0); transform: translate(3px, -1px) skewY(-2deg);}
+  80%  { clip-path: inset(0 0 90% 0); transform: translate(-2px, 2px) skewY(-2deg);}
+  100% { clip-path: inset(0 0 90% 0); transform: translate(0, 0) skewY(-2deg);}
+}
+
+@keyframes glitchBottom {
+  0%   { clip-path: inset(90% 0 0 0); transform: translate(2px, 2px) skewY(1deg);}
+  15%  { clip-path: inset(80% 0 0 0); transform: translate(-1px, -2px) skewY(1deg);}
+  35%  { clip-path: inset(70% 0 0 0); transform: translate(3px, 2px) skewY(1deg);}
+  55%  { clip-path: inset(60% 0 0 0); transform: translate(-2px, 1px) skewY(1deg);}
+  75%  { clip-path: inset(90% 0 0 0); transform: translate(1px, -1px) skewY(1deg);}
+  100% { clip-path: inset(90% 0 0 0); transform: translate(0, 0) skewY(1deg);}
+}
+
+@keyframes scanlines {
+  to { background-position-y: 4px; }
+}
+
+/* WELCOMEBOX INNER GLOW EFFECTS */
 .welcomebox .welcome-line {
   margin: 0;
   font-size: 2.5rem;
@@ -135,7 +159,7 @@ body {
   font-family: 'Segoe UI', Arial, sans-serif;
   font-weight: 800;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 .welcomebox .studio-line {
   margin: 0;
@@ -148,7 +172,7 @@ body {
   font-weight: 900;
   white-space: nowrap;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 .welcomebox .quote {
   margin-top: 1.3em;
@@ -161,9 +185,10 @@ body {
   letter-spacing: 0.5px;
   max-width: 90%;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 
+/* RESPONSIVE WELCOMEBOX */
 @media (max-width: 1100px) {
   .welcomebox {
     max-width: 97vw;

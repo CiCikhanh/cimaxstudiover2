@@ -184,7 +184,7 @@ body {
   overflow: visible;
 }
 
-/* Glowing, rotating frame/wheel effect */
+/* Glowing, rotating border light effect */
 .mindmap-btn::before {
   content: '';
   position: absolute;
@@ -192,27 +192,25 @@ body {
   border-radius: 22px;
   z-index: -1;
   background: conic-gradient(
-    from 0deg,
-    #01faff,
-    #fff 30deg,
-    #01faff 60deg,
-    #ff00cc 120deg,
-    #01faff 240deg,
-    #fff 300deg,
-    #01faff 360deg
+    from var(--angle, 0deg),
+      #01faff 0deg 20deg,
+      #fff 21deg 40deg,
+      #01faff 41deg 359deg,
+      transparent 360deg
   );
   filter: blur(2.5px) brightness(1.7);
-  animation: spinwheel 1.6s linear infinite;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 1;
+  transition: filter 0.2s, opacity 0.2s;
+  animation: border-light-spin 2s linear infinite;
 }
-@keyframes spinwheel {
-  100% {
-    transform: rotate(360deg);
+@keyframes border-light-spin {
+  to {
+    --angle: 360deg;
   }
 }
 .mindmap-btn:hover::before {
-  filter: blur(4px) brightness(2.1);
+  filter: blur(4px) brightness(2.3);
   opacity: 1;
 }
 .mindmap-btn:hover {

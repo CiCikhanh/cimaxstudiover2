@@ -85,20 +85,53 @@ body {
   color: #01faff;
   text-decoration: none;
   font-weight: bold;
-  border: 2px solid #01faff;
+  border: none;
   border-radius: 14px;
-  box-shadow: 0 0 18px #01faff66, 0 2px 16px 0 rgba(0,255,255,0.10);
   font-size: 1.2rem;
   letter-spacing: 1px;
   text-align: center;
   pointer-events: auto;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+  z-index: 2;
+  overflow: visible; /* allow animated border to show */
+}
+
+.mindmap-btn::before {
+  content: '';
+  position: absolute;
+  inset: -4px; /* controls border thickness */
+  border-radius: 22px;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    #01faff,
+    #fff 30deg,
+    #01faff 60deg,
+    #ff00cc 120deg,
+    #01faff 240deg,
+    #fff 300deg,
+    #01faff 360deg
+  );
+  filter: blur(2.5px) brightness(1.7);
+  animation: spinwheel 1.6s linear infinite;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@keyframes spinwheel {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .mindmap-btn:hover {
   background: #01faff;
   color: #0a1e28;
   border-color: #fff;
   box-shadow: 0 0 32px #01faffbb;
+}
+.mindmap-btn:hover::before {
+  filter: blur(4px) brightness(2.1);
+  opacity: 1;
 }
 
 /* Place buttons: top, left, right, bottom (adjust as needed) */

@@ -103,7 +103,7 @@ body {
 
 /* Place buttons: top, left, right, bottom (adjust as needed) */
 .btn-about   { left: 50%; top: 0; transform: translate(-50%, -70px); }
-.btn-work    { left: 150%; top: 50%; transform: translate(-50%, -50%); }
+.btn-work    { left: 130%; top: 50%; transform: translate(-50%, -50%); }
 .btn-contact { left: -30%;  top: 50%; transform: translate(-50%, -50%); }
 
 /* Draw "technology" arrows using SVG background images or ::before pseudo-elements */

@@ -164,58 +164,91 @@ body {
   z-index: 3;
 }
 
-/* Mindmap Buttons */
+/* --- TECH/HUD BUTTON STYLE --- */
 .mindmap-btn {
   position: absolute;
-  min-width: 120px;
-  padding: 12px 24px;
-  background: rgba(10,30,40,0.75);
-  color: #01faff;
+  min-width: 128px;
+  padding: 16px 38px;
+  background: linear-gradient(90deg, #071426 85%, #00f6ff22 100%);
+  color: #00f6ff;
   text-decoration: none;
-  font-weight: bold;
-  border: none;
-  border-radius: 14px;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.21rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   text-align: center;
-  pointer-events: auto;
-  transition: background 0.2s, color 0.2s;
+  border: 2.5px solid #0ff;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
+  box-shadow:
+    0 0 14px 0 #00f6ff88,
+    0 0 2px 0 #222 inset;
+  overflow: hidden;
   z-index: 2;
-  overflow: visible;
+  pointer-events: auto;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.22s,
+    background 0.25s;
 }
 
-/* Glowing, rotating border light effect */
-.mindmap-btn::before {
+.mindmap-btn:before,
+.mindmap-btn:after {
   content: '';
   position: absolute;
-  inset: -4px;
-  border-radius: 22px;
-  z-index: -1;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-      #01faff 0deg 20deg,
-      #fff 21deg 40deg,
-      #01faff 41deg 359deg,
-      transparent 360deg
-  );
-  filter: blur(2.5px) brightness(1.7);
+  border: 2px solid #00f6ffcc;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
   pointer-events: none;
-  opacity: 1;
-  transition: filter 0.2s, opacity 0.2s;
-  animation: border-light-spin 2s linear infinite;
+  transition: all 0.3s;
 }
-@keyframes border-light-spin {
-  to {
-    --angle: 360deg;
-  }
+.mindmap-btn:before {
+  top: 6px; left: 7px; right: 7px; bottom: 6px;
+  opacity: 0.17;
+  filter: blur(2.5px);
 }
-.mindmap-btn:hover::before {
-  filter: blur(4px) brightness(2.3);
-  opacity: 1;
+.mindmap-btn:after {
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.34;
 }
-.mindmap-btn:hover {
-  background: #01faff;
+
+.mindmap-btn:hover,
+.mindmap-btn:focus {
   color: #0a1e28;
+  border-color: #7fffd4;
+  background: linear-gradient(90deg, #00f6ff55 15%, #00f6ff 100%);
+  box-shadow:
+    0 0 40px 8px #00f6ff99,
+    0 0 0 2px #222 inset;
+  animation: flickerBtn 0.17s 2 linear;
+}
+
+.mindmap-btn:hover:after,
+.mindmap-btn:focus:after {
+  opacity: 0.7;
+  box-shadow: 0 0 22px 6px #00f6ff55;
+}
+
+/* HUD CORNERS */
+.mindmap-btn .hud-corner {
+  position: absolute;
+  width: 18px; height: 18px;
+  border: 2px solid #00f6ff;
+  opacity: 0.8;
+  z-index: 3;
+  pointer-events: none;
+}
+.mindmap-btn .hud-corner.tl { left: -3px; top: -3px; border-bottom: none; border-right: none; }
+.mindmap-btn .hud-corner.tr { right: -3px; top: -3px; border-bottom: none; border-left: none; }
+.mindmap-btn .hud-corner.bl { left: -3px; bottom: -3px; border-top: none; border-right: none; }
+.mindmap-btn .hud-corner.br { right: -3px; bottom: -3px; border-top: none; border-left: none; }
+
+/* Flicker Animation on Hover */
+@keyframes flickerBtn {
+  0% { filter: brightness(2) blur(0.5px);}
+  30% { filter: brightness(0.5) blur(1.4px);}
+  60% { filter: brightness(2.5) blur(0.2px);}
+  100% { filter: brightness(1) blur(0px);}
 }
 
 /* Positioning buttons: example for 3 buttons */
@@ -234,7 +267,6 @@ body {
   opacity: 0.55;
   border-radius: 2px;
   pointer-events: none;
-  /* Default is none, override for each button below */
   display: none;
 }
 .btn-work::after {

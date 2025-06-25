@@ -99,7 +99,7 @@ body {
 .mindmap-btn::before {
   content: '';
   position: absolute;
-  inset: -4px; /* controls border thickness */
+  inset: 1px; /* controls border thickness */
   border-radius: 22px;
   z-index: -1;
   background: conic-gradient(

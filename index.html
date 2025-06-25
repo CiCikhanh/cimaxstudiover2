@@ -13,7 +13,7 @@
       padding: 0;
       min-height: 100vh;
       min-width: 100vw;
-      background: url('pictures/backgroundrobot3.jpg') no-repeat center center fixed;
+      background: url('pictures/backgroundrobot1.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
@@ -51,11 +51,11 @@
     }
 
     .welcomebox {
-      max-width: 650px;
-      width: 90vw;
+      max-width: 800px;
+      width: 95vw;
       margin: 0 auto;
-      margin-top: 10vh;
-      padding: 70px 32px;
+      margin-top: 12vh;
+      padding: 80px 32px 48px 32px;
       background: rgba(255,255,255,0.10);
       border-radius: 32px;
       box-shadow: 0 8px 32px 0 rgba(31,38,135,0.28);
@@ -64,41 +64,55 @@
       border: 2.5px solid rgba(255, 255, 255, 0.18);
       text-align: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
     }
     .welcomebox .welcome-line {
       margin: 0;
-      font-size: 2.1rem;
-      letter-spacing: 2px;
-      color: #fff;
-      text-shadow: 0 1px 24px rgba(0,0,0,0.28);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-weight: 700;
-    }
-    .welcomebox .studio-line {
-      margin: 0;
-      margin-top: 0.3em;
       font-size: 2.8rem;
       letter-spacing: 2px;
       color: #fff;
       text-shadow: 0 1px 24px rgba(0,0,0,0.28);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: 800;
+    }
+    .welcomebox .studio-line {
+      margin: 0;
+      margin-top: 0.32em;
+      font-size: 3.7rem;
+      letter-spacing: 3px;
+      color: #fff;
+      text-shadow: 0 1px 30px rgba(0,0,0,0.28);
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
       font-weight: 900;
       white-space: nowrap;
+    }
+    .welcomebox .quote {
+      margin-top: 1.2em;
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #dfe7fa;
+      opacity: 0.90;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.23);
+      letter-spacing: 0.5px;
+      max-width: 90%;
     }
 
     @media (max-width: 900px) {
       .welcomebox {
         max-width: 98vw;
-        padding: 38px 3vw;
+        padding: 40px 4vw 28px 4vw;
       }
       .welcomebox .welcome-line {
-        font-size: 1.4rem;
+        font-size: 2rem;
       }
       .welcomebox .studio-line {
-        font-size: 2rem;
+        font-size: 2.7rem;
+      }
+      .welcomebox .quote {
+        font-size: 1.09rem;
       }
       .headbar {
         gap: 14px;
@@ -107,7 +121,7 @@
     }
     @media (max-width: 600px) {
       .welcomebox {
-        padding: 22px 3vw;
+        padding: 20px 2vw 14px 2vw;
       }
       .headbar {
         gap: 6px;
@@ -115,10 +129,13 @@
         background: rgba(35, 39, 47, 0.98);
       }
       .welcomebox .welcome-line {
-        font-size: 1.05rem;
+        font-size: 1.35rem;
       }
       .welcomebox .studio-line {
-        font-size: 1.45rem;
+        font-size: 1.6rem;
+      }
+      .welcomebox .quote {
+        font-size: 0.92rem;
       }
     }
   </style>
@@ -132,6 +149,7 @@
   <div class="welcomebox">
     <div class="welcome-line">Welcome to</div>
     <div class="studio-line">CiMax Studio</div>
+    <div class="quote">Ideas become interfaces. Feelings become flow.</div>
   </div>
 </body>
 </html>

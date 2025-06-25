@@ -51,68 +51,124 @@
     }
 
     .welcomebox {
-      max-width: 800px;
-      width: 95vw;
+      position: relative;
+      max-width: 500px;
+      width: 94vw;
       margin: 0 auto;
-      margin-top: 12vh;
-      padding: 80px 32px 48px 32px;
-      background: rgba(255,255,255,0.10);
-      border-radius: 32px;
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.28);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 2.5px solid rgba(255, 255, 255, 0.18);
-      text-align: center;
+      margin-top: 34vh; /* Adjust this value to position inside the robot hand */
+      padding: 58px 30px 36px 30px;
+      background: rgba(25,30,40,0.38);
+      border-radius: 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      text-align: center;
+
+      /* Futuristic glass and glow */
+      box-shadow: 
+        0 2px 32px 0 rgba(0,255,255,0.10),
+        0 0 16px 3px rgba(0,255,255,0.22),
+        0 4px 64px 0 rgba(0,0,0,0.28);
+      border: 2.5px solid rgba(0,255,255,0.5);
+      backdrop-filter: blur(13px) saturate(155%);
+      -webkit-backdrop-filter: blur(13px) saturate(155%);
+
+      /* Animated glowing border effect */
+      box-sizing: border-box;
+      overflow: hidden;
+      animation: hologlow 2.5s ease-in-out infinite alternate;
     }
+
+    /* Glowing border animation */
+    @keyframes hologlow {
+      0% {
+        box-shadow:
+          0 2px 32px 0 rgba(0,255,255,0.14),
+          0 0 16px 3px rgba(0,255,255,0.2),
+          0 4px 64px 0 rgba(0,0,0,0.22);
+        border-color: rgba(0,255,255,0.5);
+      }
+      100% {
+        box-shadow:
+          0 2px 44px 0 rgba(0,255,255,0.24),
+          0 0 24px 6px rgba(0,255,255,0.35),
+          0 6px 80px 0 rgba(0,0,0,0.33);
+        border-color: rgba(0,255,180,0.85);
+      }
+    }
+
+    /* Subtle card overlay gradients for depth */
+    .welcomebox::before,
+    .welcomebox::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      border-radius: 28px;
+      z-index: 1;
+    }
+    .welcomebox::before {
+      background: linear-gradient(120deg, rgba(0,255,255,0.10) 0%, rgba(255,255,255,0.07) 100%);
+      mix-blend-mode: lighten;
+    }
+    .welcomebox::after {
+      background: radial-gradient(circle at 80% 20%, rgba(0,255,255,0.07) 0%, transparent 60%);
+      mix-blend-mode: lighten;
+    }
+
     .welcomebox .welcome-line {
       margin: 0;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
+      font-size: 3.2rem;
+      letter-spacing: 2.5px;
       color: #fff;
-      text-shadow: 0 1px 24px rgba(0,0,0,0.28);
+      text-shadow: 0 1px 24px rgba(0,255,255,0.33), 0 1px 24px rgba(0,0,0,0.28);
       font-family: 'Segoe UI', Arial, sans-serif;
       font-weight: 800;
+      position: relative;
+      z-index: 2;
     }
     .welcomebox .studio-line {
       margin: 0;
-      margin-top: 0.32em;
-      font-size: 3.7rem;
-      letter-spacing: 3px;
-      color: #fff;
-      text-shadow: 0 1px 30px rgba(0,0,0,0.28);
+      margin-top: 0.4em;
+      font-size: 4.1rem;
+      letter-spacing: 4px;
+      color: #01faff;
+      text-shadow: 0 0 32px #01faff, 0 1px 32px rgba(0,0,0,0.28);
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
       font-weight: 900;
       white-space: nowrap;
+      position: relative;
+      z-index: 2;
     }
     .welcomebox .quote {
-      margin-top: 1.2em;
-      font-size: 1.25rem;
+      margin-top: 1.4em;
+      font-size: 1.28rem;
       font-weight: 400;
       font-style: italic;
       color: #dfe7fa;
       opacity: 0.90;
-      text-shadow: 0 1px 10px rgba(0,0,0,0.23);
+      text-shadow: 0 1px 10px rgba(0,255,255,0.17), 0 1px 10px rgba(0,0,0,0.15);
       letter-spacing: 0.5px;
       max-width: 90%;
+      position: relative;
+      z-index: 2;
     }
 
     @media (max-width: 900px) {
       .welcomebox {
-        max-width: 98vw;
-        padding: 40px 4vw 28px 4vw;
+        max-width: 97vw;
+        padding: 32px 2vw 20px 2vw;
+        margin-top: 30vh;
       }
       .welcomebox .welcome-line {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       .welcomebox .studio-line {
-        font-size: 2.7rem;
+        font-size: 2.8rem;
       }
       .welcomebox .quote {
-        font-size: 1.09rem;
+        font-size: 1.02rem;
       }
       .headbar {
         gap: 14px;
@@ -121,7 +177,8 @@
     }
     @media (max-width: 600px) {
       .welcomebox {
-        padding: 20px 2vw 14px 2vw;
+        padding: 12px 1vw 10px 1vw;
+        margin-top: 23vh;
       }
       .headbar {
         gap: 6px;
@@ -129,13 +186,13 @@
         background: rgba(35, 39, 47, 0.98);
       }
       .welcomebox .welcome-line {
-        font-size: 1.35rem;
+        font-size: 1.18rem;
       }
       .welcomebox .studio-line {
-        font-size: 1.6rem;
+        font-size: 1.58rem;
       }
       .welcomebox .quote {
-        font-size: 0.92rem;
+        font-size: 0.89rem;
       }
     }
   </style>

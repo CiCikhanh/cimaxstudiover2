@@ -23,9 +23,9 @@ body {
   left: 0;
   width: 100vw;
   display: flex;
-  justify-content: flex-start; /* Left align the bar items */
+  justify-content: flex-end; /* Left align the bar items */
   gap: 34px;
-  padding: 30px 0 0 40px; /* Padding left for space from the edge */
+  padding: 30px 40px 0 0; /* Padding left for space from the edge */
   z-index: 10;
   background: transparent;
   border-bottom-left-radius: 22px;

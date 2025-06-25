@@ -5,21 +5,26 @@
   <title>Cimax Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Set full background */
+    /* Set full background with better fit */
     body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      min-width: 100vw;
       background: url('pictures/backgroundrobot1.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Arial, sans-serif;
-      position: relative;
       color: #fff;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Head bar styles */
     .headbar {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: 0;
       display: flex;
@@ -41,36 +46,54 @@
       background: rgba(0,0,0,0.55);
     }
 
-    /* Welcome box with frosted glass effect */
+    /* Bigger Welcome box with frosted glass effect */
     .welcomebox {
-      max-width: 400px;
-      margin: 18vh auto 0 auto;
-      padding: 40px 32px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 22px;
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      max-width: 650px;
+      width: 90vw;
+      margin: 0 auto;
+      margin-top: 10vh;
+      padding: 70px 32px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 32px;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.28);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 2.5px solid rgba(255, 255, 255, 0.18);
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
     .welcomebox h1 {
       margin: 0;
-      font-size: 2.1rem;
+      font-size: 2.8rem;
       letter-spacing: 2px;
       color: #fff;
-      text-shadow: 0 1px 16px rgba(0,0,0,0.25);
-      font-weight: 700;
+      text-shadow: 0 1px 24px rgba(0,0,0,0.28);
+      font-weight: 800;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
       .welcomebox {
-        max-width: 95vw;
-        padding: 20px 8vw;
+        max-width: 98vw;
+        padding: 38px 3vw;
+      }
+      .welcomebox h1 {
+        font-size: 2.1rem;
       }
       .headbar {
-        padding: 20px 10px 0 0;
-        gap: 10px;
+        gap: 14px;
+        padding: 18px 5px 0 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .welcomebox {
+        padding: 22px 3vw;
+      }
+      .headbar {
+        gap: 6px;
+        padding: 10px 2px 0 0;
       }
     }
   </style>

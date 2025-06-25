@@ -25,7 +25,7 @@ body {
   display: flex;
   justify-content: flex-end; /* Left align the bar items */
   gap: 34px;
-  padding: 30px 40px 0 140px; /* Padding left for space from the edge *//* Top, right, bottom, left */
+  padding: 30px 40px 0 80px; /* Padding left for space from the edge *//* Top, right, bottom, left */
   z-index: 10;
   background: transparent;
   border-bottom-left-radius: 22px;

@@ -8,7 +8,6 @@
   <!-- Orbitron font for tech/AI style -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <style>
-    /* Set full background with better fit */
     body {
       margin: 0;
       padding: 0;
@@ -25,7 +24,6 @@
       justify-content: center;
     }
 
-    /* Head bar styles */
     .headbar {
       position: fixed;
       top: 0;
@@ -34,7 +32,7 @@
       gap: 30px;
       padding: 30px 40px 0 0;
       z-index: 10;
-      background: rgba(35, 39, 47, 0.09); /* subtle dark background */
+      background: rgba(35, 39, 47, 0.09);
       border-bottom-left-radius: 22px;
       transition: background 0.3s;
     }
@@ -52,7 +50,6 @@
       background: rgba(0,0,0,0.55);
     }
 
-    /* Bigger Welcome box with frosted glass effect */
     .welcomebox {
       max-width: 650px;
       width: 90vw;
@@ -71,13 +68,25 @@
       justify-content: center;
       flex-direction: column;
     }
-    .welcomebox h1 {
+    .welcomebox .welcome-line {
       margin: 0;
+      font-size: 2.1rem;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 1px 24px rgba(0,0,0,0.28);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: 700;
+    }
+    .welcomebox .studio-line {
+      margin: 0;
+      margin-top: 0.3em;
       font-size: 2.8rem;
       letter-spacing: 2px;
       color: #fff;
       text-shadow: 0 1px 24px rgba(0,0,0,0.28);
-      font-weight: 800;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      font-weight: 900;
+      white-space: nowrap;
     }
 
     @media (max-width: 900px) {
@@ -85,8 +94,11 @@
         max-width: 98vw;
         padding: 38px 3vw;
       }
-      .welcomebox h1 {
-        font-size: 2.1rem;
+      .welcomebox .welcome-line {
+        font-size: 1.4rem;
+      }
+      .welcomebox .studio-line {
+        font-size: 2rem;
       }
       .headbar {
         gap: 14px;
@@ -100,6 +112,13 @@
       .headbar {
         gap: 6px;
         padding: 10px 2px 0 0;
+        background: rgba(35, 39, 47, 0.98);
+      }
+      .welcomebox .welcome-line {
+        font-size: 1.05rem;
+      }
+      .welcomebox .studio-line {
+        font-size: 1.45rem;
       }
     }
   </style>
@@ -111,7 +130,8 @@
     <a href="#contact">Contact</a>
   </div>
   <div class="welcomebox">
-    <h1>Welcome to Cimax Studio</h1>
+    <div class="welcome-line">Welcome to</div>
+    <div class="studio-line">CiMax Studio</div>
   </div>
 </body>
 </html>

@@ -32,7 +32,7 @@
       gap: 30px;
       padding: 30px 40px 0 0;
       z-index: 10;
-      background: rgba(35, 39, 47, 0.09);
+      /* background removed for total transparency */
       border-bottom-left-radius: 22px;
       transition: background 0.3s;
     }
@@ -45,6 +45,7 @@
       background: rgba(0,0,0,0.35);
       backdrop-filter: blur(5px);
       transition: background 0.2s;
+      box-shadow: 0 2px 16px 0 rgba(0,255,255,0.10);
     }
     .headbar a:hover {
       background: rgba(0,0,0,0.55);
@@ -73,14 +74,11 @@
       border: 2.5px solid rgba(0,255,255,0.5);
       backdrop-filter: blur(13px) saturate(155%);
       -webkit-backdrop-filter: blur(13px) saturate(155%);
-
-      /* Animated glowing border effect */
       box-sizing: border-box;
       overflow: hidden;
       animation: hologlow 2.5s ease-in-out infinite alternate;
     }
 
-    /* Glowing border animation */
     @keyframes hologlow {
       0% {
         box-shadow:
@@ -98,7 +96,6 @@
       }
     }
 
-    /* Subtle card overlay gradients for depth */
     .welcomebox::before,
     .welcomebox::after {
       content: "";
@@ -183,7 +180,7 @@
       .headbar {
         gap: 6px;
         padding: 10px 2px 0 0;
-        background: rgba(35, 39, 47, 0.98);
+        /* background removed for transparency */
       }
       .welcomebox .welcome-line {
         font-size: 1.18rem;

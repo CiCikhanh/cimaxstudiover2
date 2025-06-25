@@ -1,7 +1,7 @@
 
 :root {
   --card-center-y-pc: 48vh;   /* Move up a bit */
-  --card-center-y-mob: 50vh;
+  --card-center-y-mob: 42vh;
 }
 
 body {

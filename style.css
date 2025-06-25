@@ -40,16 +40,30 @@ body {
   font-weight: bold;
   font-size: 1.3rem;
   padding: 13px 28px;
-  border-radius: 30px;
+  border-radius: 8px;
+  border: 2px solid #01faff;
   background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(7px);
-  transition: background 0.2s, font-size 0.2s;
-  box-shadow: 0 2px 16px 0 rgba(0,255,255,0.10);
+  box-shadow:
+    0 0 8px #01faff,
+    0 0 0 2px #222 inset,
+    0 0 10px 2px #01faff66;
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, font-size 0.2s, box-shadow 0.2s, border-color 0.2s;
   letter-spacing: 1px;
+  overflow: hidden;
+  clip-path: polygon(
+    8% 0, 92% 0, 100% 20%, 100% 80%, 92% 100%, 8% 100%, 0 80%, 0 20%
+  ); /* techy angled border */
 }
 
 .headbar a:hover {
-  background: rgba(0,0,0,0.55);
+  background: rgba(1,250,255,0.25);
+  border-color: #fff;
+  box-shadow:
+    0 0 24px #01faff,
+    0 0 0 2px #222 inset,
+    0 0 30px 4px #01faffbb;
 }
 
 @media (max-width: 750px) {

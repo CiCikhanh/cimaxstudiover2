@@ -116,7 +116,80 @@ body {
   overflow: hidden;
   z-index: 2;
 }
+.mindmap-nav {
+  position: absolute;
+  left: 50%;
+  top: 48vh;
+  width: 500px;
+  height: 380px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.mindmap-btn {
+  position: absolute;
+  min-width: 120px;
+  padding: 12px 24px;
+  background: rgba(10,30,40,0.75);
+  color: #01faff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #01faff;
+  border-radius: 14px;
+  box-shadow: 0 0 18px #01faff66, 0 2px 16px 0 rgba(0,255,255,0.10);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-align: center;
+  pointer-events: auto;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.mindmap-btn:hover {
+  background: #01faff;
+  color: #0a1e28;
+  border-color: #fff;
+  box-shadow: 0 0 32px #01faffbb;
+}
 
+/* Place buttons: top, left, right, bottom (adjust as needed) */
+.btn-about   { left: 50%; top: 0; transform: translate(-50%, -70px); }
+.btn-work    { left: 94%; top: 50%; transform: translate(-50%, -50%); }
+.btn-contact { left: 6%;  top: 50%; transform: translate(-50%, -50%); }
+
+/* Draw "technology" arrows using SVG background images or ::before pseudo-elements */
+.mindmap-btn::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #01faff, transparent);
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+.btn-about::before {
+  width: 3px;
+  height: 60px;
+  background: linear-gradient(180deg, #01faff, transparent);
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.btn-work::before {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #01faff, transparent);
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%);
+}
+.btn-contact::before {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(270deg, #01faff, transparent);
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+}
 /* GLITCH EFFECT PSEUDO-ELEMENTS */
 .welcomebox::before,
 .welcomebox::after {

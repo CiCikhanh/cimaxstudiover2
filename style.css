@@ -117,7 +117,26 @@ body {
   pointer-events: none;
   opacity: 0.8;
 }
-
+@media (max-width: 700px) {
+  .mindmap-nav {
+    width: 96vw; /* Make container nearly full width */
+    height: 320px; /* Adjust height if needed */
+    left: 50%;
+    top: 53vh;
+    transform: translate(-50%, -50%);
+  }
+  .btn-about {
+    left: 50%; top: 0; transform: translate(-50%, -60px);
+  }
+  .btn-work {
+    left: 80%; top: 52%;
+    transform: translate(-50%, -50%);
+  }
+  .btn-contact {
+    left: 20%; top: 52%;
+    transform: translate(-50%, -50%);
+  }
+}
 @keyframes spinwheel {
   100% {
     transform: rotate(360deg);

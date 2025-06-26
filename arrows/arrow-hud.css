@@ -1,0 +1,31 @@
+.mindmap-arrow {
+  position: absolute;
+  width: 80px; /* match SVG width */
+  height: 32px; /* match SVG height */
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.94;
+  filter: drop-shadow(0 0 18px #01faff) brightness(1.8);
+  transition: filter 0.2s;
+}
+
+/* Example: Arrow from box to "About" button, pointing downward */
+.arrow-about {
+  left: 50%;
+  top: 13%; /* Tune this to position the arrow head at the button */
+  transform: translate(-50%, 0) rotate(90deg);
+}
+
+/* Example: Arrow from box to "Work" button, pointing to the right */
+.arrow-work {
+  left: 83%;
+  top: 53%;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Example: Arrow from box to "Contact" button, pointing to the left */
+.arrow-contact {
+  left: 17%;
+  top: 53%;
+  transform: translate(-50%, -50%) rotate(180deg);
+}

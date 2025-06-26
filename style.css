@@ -153,6 +153,7 @@ body {
 }
 
 /* MINDMAP NAVIGATION AROUND WELCOMEBOX */
+@import url('arrows/arrow-hud.css')
 .mindmap-nav {
   position: absolute;
   left: 50%;

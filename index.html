@@ -38,5 +38,17 @@
     <div class="studio-line">CIMAX Studio</div>
     <div class="quote">Ideas become interfaces. Feelings become flow.</div>
   </div>
+  <script>
+const welcomeBox = document.querySelector('.welcomebox');
+const welcomeSound = document.getElementById('welcome-sound');
+
+if (welcomeBox && welcomeSound) {
+  welcomeBox.addEventListener('mouseenter', () => {
+    welcomeSound.currentTime = 0; // Restart sound if hovered multiple times
+    welcomeSound.play();
+  });
+}
+</script>
+  <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
 </body>
 </html>

@@ -43,7 +43,7 @@ const welcomeBox = document.querySelector('.welcomebox');
 const welcomeSound = document.getElementById('welcome-sound');
 
 if (welcomeBox && welcomeSound) {
-  welcomeBox.addEventListener('mouseenter', () => {
+  welcomeBox.addEventListener('click', () => {
     welcomeSound.currentTime = 0; // Restart sound if hovered multiple times
     welcomeSound.play();
   });

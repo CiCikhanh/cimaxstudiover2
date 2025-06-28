@@ -178,7 +178,7 @@ body {
   position: absolute;
   min-width: 128px;
   padding: 16px 38px;
-  background: linear-gradient(90deg, #071426 85%, #00f6ff22 100%);
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
   color: #00f6ff;
   text-decoration: none;
   font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;

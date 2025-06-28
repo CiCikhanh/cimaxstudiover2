@@ -192,7 +192,6 @@ body {
   box-shadow:
     0 0 14px 0 #00f6ff88,
     0 0 2px 0 #222 inset;
-  overflow: hidden;
   z-index: 2;
   pointer-events: auto;
   transition:

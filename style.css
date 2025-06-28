@@ -286,7 +286,7 @@ body {
 
 .btn-work::after {
   display: block;
-  left: -70px;
+  left: -50px;
   top: 50%;
   width: 50px;
   height: 3px;
@@ -297,7 +297,7 @@ body {
 
 .btn-contact::after {
   display: block;
-  left: 90%;
+  left: 95%;
   top: 50%;
   width: 50px;
   height: 3px;

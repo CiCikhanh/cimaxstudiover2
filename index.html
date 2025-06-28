@@ -10,44 +10,65 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <div class="mindmap-nav">
-  <a href="#about" class="mindmap-btn btn-about">
-    About CiCi
-    <span class="hud-corner tl"></span>
-    <span class="hud-corner tr"></span>
-    <span class="hud-corner bl"></span>
-    <span class="hud-corner br"></span>
-  </a>
-  <a href="#work" class="mindmap-btn btn-work">
-    My Work
-    <span class="hud-corner tl"></span>
-    <span class="hud-corner tr"></span>
-    <span class="hud-corner bl"></span>
-    <span class="hud-corner br"></span>
-  </a>
-  <a href="#contact" class="mindmap-btn btn-contact">
-    Contact
-    <span class="hud-corner tl"></span>
-    <span class="hud-corner tr"></span>
-    <span class="hud-corner bl"></span>
-    <span class="hud-corner br"></span>
-  </a>
-</div>
+  <!-- Mindmap Navigation -->
+  <div class="mindmap-nav">
+    <a href="#about" class="mindmap-btn btn-about">
+      About CiCi
+      <span class="hud-corner tl"></span>
+      <span class="hud-corner tr"></span>
+      <span class="hud-corner bl"></span>
+      <span class="hud-corner br"></span>
+    </a>
+    <a href="#work" class="mindmap-btn btn-work">
+      My Work
+      <span class="hud-corner tl"></span>
+      <span class="hud-corner tr"></span>
+      <span class="hud-corner bl"></span>
+      <span class="hud-corner br"></span>
+    </a>
+    <a href="#contact" class="mindmap-btn btn-contact">
+      Contact
+      <span class="hud-corner tl"></span>
+      <span class="hud-corner tr"></span>
+      <span class="hud-corner bl"></span>
+      <span class="hud-corner br"></span>
+    </a>
+  </div>
+  
+  <!-- Welcome Box -->
   <div class="welcomebox">
     <div class="welcome-line">Welcome to</div>
     <div class="studio-line">CIMAX Studio</div>
     <div class="quote">Ideas become interfaces. Feelings become flow.</div>
   </div>
+  
+  <!-- Audio for Welcome Box Hover -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
-<script>
-const welcomeBox = document.querySelector('.welcomebox');
-const welcomeSound = document.getElementById('welcome-sound');
-if (welcomeBox && welcomeSound) {
-  welcomeBox.addEventListener('mouseenter', () => {
-    welcomeSound.currentTime = 0;
-    welcomeSound.play();
-  });
-}
-</script>
+  
+  <!-- JavaScript for Playing Sound on Hover/Click -->
+  <script>
+    const welcomeBox = document.querySelector('.welcomebox');
+    const welcomeSound = document.getElementById('welcome-sound');
+
+    if (welcomeBox && welcomeSound) {
+      // Main: Play on mouseenter (hover)
+      welcomeBox.addEventListener('mouseenter', () => {
+        // Required for Chrome: only play if not already playing
+        try {
+          welcomeSound.currentTime = 0;
+          welcomeSound.play();
+        } catch (err) {
+          // Ignore autoplay errors
+        }
+      });
+      // Fallback: Also play on click (in case browser blocks hover sound)
+      welcomeBox.addEventListener('click', () => {
+        try {
+          welcomeSound.currentTime = 0;
+          welcomeSound.play();
+        } catch (err) {}
+      });
+    }
+  </script>
 </body>
 </html>

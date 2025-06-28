@@ -44,7 +44,7 @@
   
   <!-- Audio for Welcome Box Click -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
-  
+  <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
   <!-- JavaScript for Playing/Stopping Sound on Click -->
   <script>
     const welcomeBox = document.querySelector('.welcomebox');
@@ -61,6 +61,20 @@
         }
       });
     }
+  </script>
+  <script>
+  // Select all mindmap navigation buttons
+  const mindmapButtons = document.querySelectorAll('.mindmap-btn');
+  const buttonSound = document.getElementById('button-sound');
+
+  mindmapButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (buttonSound) {
+        buttonSound.currentTime = 0;
+        buttonSound.play();
+      }
+    });
+  });
   </script>
 </body>
 </html>

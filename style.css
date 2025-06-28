@@ -286,7 +286,7 @@ body {
 
 .btn-work::after {
   display: block;
-  left: -45px;
+  left: -42px;
   top: 50%;
   width: 50px;
   height: 3px;
@@ -318,14 +318,14 @@ body {
     transform: translate(-50%, -50%);
   }
   .btn-about {
-    left: 50%; top: 0; transform: translate(-50%, -60px);
+    left: 50%; top: 20%; transform: translate(-50%, -60px);
   }
   .btn-work {
-    left: 80%; top: 52%;
+    left: 70%; top: 60%;
     transform: translate(-50%, -50%);
   }
   .btn-contact {
-    left: 20%; top: 52%;
+    left: 30%; top: 60%;
     transform: translate(-50%, -50%);
   }
   .btn-about::after {

@@ -410,8 +410,8 @@ body {
   gap: 28px;
 }
 .about-cici-img {
-  width: 350px;
-  height: 350px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 14px #06f4ff33;

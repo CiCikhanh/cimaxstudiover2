@@ -407,7 +407,6 @@ body {
   gap: 28px;
 }
 .about-cici-img {
-  display:flex;
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -426,7 +425,11 @@ body {
   font-size: 1rem;
 }
 @media (max-width: 600px) {
-  .about-cici-container {
+   .about-cici-img {
+    width: 100px;
+    height: 100px;
+  }
+   .about-cici-container {
     flex-direction: column;
     padding: 18px 8px;
     margin-bottom: 0;

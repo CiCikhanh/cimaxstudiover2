@@ -42,14 +42,54 @@
     <div class="quote">Ideas become interfaces. Feelings become flow.</div>
   </div>
   
+  <!-- My Work Section -->
+  <div class="mywork-section">
+    <!-- Put your work showcase here -->
+    <div class="work-title">My Work</div>
+    <div class="work-list">
+      <!-- Example work item -->
+      <div class="work-item">
+        <div class="work-img"></div>
+        <div class="work-desc">Project 1 description</div>
+      </div>
+      <!-- More work items... -->
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <div class="contact-title">Contact</div>
+    <div class="contact-info">
+      <p>Email: example@email.com</p>
+      <p>Instagram: @yourinsta</p>
+      <!-- More contact info -->
+    </div>
+  </div>
+
+  <!-- About CiCi Section (Hidden by default) -->
+  <div id="about-cici-section" style="display:none;">
+    <div class="about-cici-container">
+      <img class="about-cici-img" src="pictures/profile webpic.jpeg" alt="CiCi's photo" />
+      <div class="about-cici-box">
+        <p>
+          Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
+          Cimax is where ideas become interfaces, and feelings become flow.<br><br>
+          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, exploring cybersecurity, or building mindful digital spaces, Cimax is my playground for creativity and transformation.<br><br>
+          Let’s co-create something meaningful.
+        </p>
+      </div>
+    </div>
+  </div>
+  
   <!-- Audio for Welcome Box Click -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
-  <!-- JavaScript for Playing/Stopping Sound on Click -->
+  
+  <!-- JavaScript for UI Interactions -->
   <script>
+    // Play welcome sound on click
     const welcomeBox = document.querySelector('.welcomebox');
     const welcomeSound = document.getElementById('welcome-sound');
-
     if (welcomeBox && welcomeSound) {
       welcomeBox.addEventListener('click', () => {
         if (welcomeSound.paused || welcomeSound.ended) {
@@ -61,20 +101,47 @@
         }
       });
     }
-  </script>
-  <script>
-  // Select all mindmap navigation buttons
-  const mindmapButtons = document.querySelectorAll('.mindmap-btn');
-  const buttonSound = document.getElementById('button-sound');
 
-  mindmapButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (buttonSound) {
-        buttonSound.currentTime = 0;
-        buttonSound.play();
-      }
+    // Play button sound for all mindmap buttons
+    const mindmapButtons = document.querySelectorAll('.mindmap-btn');
+    const buttonSound = document.getElementById('button-sound');
+    mindmapButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (buttonSound) {
+          buttonSound.currentTime = 0;
+          buttonSound.play();
+        }
+      });
     });
-  });
+
+    // About CiCi button logic
+    const aboutBtn = document.querySelector('.btn-about');
+    const welcomeBoxDiv = document.querySelector('.welcomebox');
+    const myWorkSection = document.querySelector('.mywork-section');
+    const contactSection = document.querySelector('.contact-section');
+    const aboutCiciSection = document.getElementById('about-cici-section');
+    aboutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if(welcomeBoxDiv) welcomeBoxDiv.style.display = 'none';
+      if(myWorkSection) myWorkSection.style.display = 'none';
+      if(contactSection) contactSection.style.display = 'none';
+      if(aboutCiciSection) aboutCiciSection.style.display = 'block';
+    });
+    // Optionally, add logic to restore sections if other nav is clicked
+    document.querySelector('.btn-work').addEventListener('click', function(e){
+      e.preventDefault();
+      if(welcomeBoxDiv) welcomeBoxDiv.style.display = 'none';
+      if(myWorkSection) myWorkSection.style.display = 'block';
+      if(contactSection) contactSection.style.display = 'none';
+      if(aboutCiciSection) aboutCiciSection.style.display = 'none';
+    });
+    document.querySelector('.btn-contact').addEventListener('click', function(e){
+      e.preventDefault();
+      if(welcomeBoxDiv) welcomeBoxDiv.style.display = 'none';
+      if(myWorkSection) myWorkSection.style.display = 'none';
+      if(contactSection) contactSection.style.display = 'block';
+      if(aboutCiciSection) aboutCiciSection.style.display = 'none';
+    });
   </script>
 </body>
 </html>

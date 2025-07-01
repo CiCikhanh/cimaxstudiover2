@@ -440,9 +440,38 @@ body {
   #about-cici-section {
     padding-top: 32px;
   }
-  .tech-back-btn {
-    order: 2; /* Ensure it's after the container */
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
+.tech-back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 38px;
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  color: #00f6ff;
+  border: 2.5px solid #0ff;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.21rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow:
+    0 0 14px 0 #00f6ff88,
+    0 0 2px 0 #222 inset;
+  cursor: pointer;
+  margin-top: 28px;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.22s,
+    background 0.25s;
+}
+.tech-back-btn:hover,
+.tech-back-btn:focus {
+  color: #0a1e28;
+  border-color: #7fffd4;
+  background: linear-gradient(90deg, #00f6ff55 15%, #00f6ff 100%);
+  box-shadow:
+    0 0 40px 8px #00f6ff99,
+    0 0 0 2px #222 inset;
+ }
 }

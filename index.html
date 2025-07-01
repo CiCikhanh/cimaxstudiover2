@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .hidden { display: none !important; }
+
+    /* Tech style for back button */
     .tech-back-btn {
       display: inline-flex;
       align-items: center;
@@ -22,8 +24,7 @@
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
-      margin-bottom: 24px;
-      margin-top: 8px;
+      margin-top: 28px;
       box-shadow: 0 0 12px #06f4ff44;
       transition: background 0.2s, color 0.2s;
     }
@@ -32,19 +33,35 @@
       color: #181a20;
       box-shadow: 0 0 24px #06f4ff99;
     }
+
+    /* Center About CiCi section & content */
+    #about-cici-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      width: 100%;
+      padding-top: 40px;
+    }
+    .about-cici-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      box-shadow: 0 4px 32px #06f4ff15;
+      background: #23272f;
+      border-radius: 18px;
+      padding: 32px 36px;
+    }
     .about-cici-img {
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      margin-right: 22px;
+      margin-right: 0;
       object-fit: cover;
       box-shadow: 0 2px 14px #06f4ff33;
       border: 2px solid #06f4ff;
-    }
-    .about-cici-container {
-      display: flex;
-      align-items: flex-start;
-      margin-top: 24px;
     }
     .about-cici-box {
       max-width: 410px;
@@ -54,6 +71,36 @@
       border-radius: 10px;
       box-shadow: 0 2px 16px #06f4ff15;
       font-size: 1rem;
+    }
+    /* Make sure Back button is below on mobile */
+    @media (max-width: 600px) {
+      #about-cici-section {
+        min-height: 0;
+        padding-top: 32px;
+      }
+      .about-cici-container {
+        flex-direction: column;
+        padding: 18px 8px;
+        margin-bottom: 0;
+      }
+      .about-cici-img {
+        margin-bottom: 12px;
+      }
+      .tech-back-btn {
+        order: 2;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+    }
+    /* Style for other sections */
+    .section-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      width: 100%;
+      padding-top: 40px;
     }
   </style>
 </head>
@@ -92,7 +139,6 @@
   
   <!-- About CiCi Section -->
   <div id="about-cici-section" class="hidden">
-    <button class="tech-back-btn" id="back-about">&larr; Back</button>
     <div class="about-cici-container">
       <img class="about-cici-img" src="pictures/profile webpic.jpeg" alt="CiCi's photo" />
       <div class="about-cici-box">
@@ -107,20 +153,19 @@
     <button class="tech-back-btn" id="back-about">&larr; Back</button>
   </div>
   <!-- My Work Section -->
-  <div class="mywork-section hidden">
+  <div class="section-content hidden" id="mywork-section">
+    <div class="work-title" style="color:#06f4ff; font-family:'Orbitron'; font-size:1.4rem; margin-bottom:24px;">My Work</div>
+    <div class="work-list" style="color:#e0fbff;">Describe your projects here</div>
     <button class="tech-back-btn" id="back-work">&larr; Back</button>
-    <div class="work-title">My Work</div>
-    <div class="work-list">
-      <div class="work-item">
-        <div class="work-img"></div>
-        <div class="work-desc">Project 1 description</div>
-      </div>
-    </div>
   </div>
   <!-- Contact Section -->
-  <div class="contact-section hidden">
+  <div class="section-content hidden" id="contact-section">
+    <div class="contact-title" style="color:#06f4ff; font-family:'Orbitron'; font-size:1.4rem; margin-bottom:24px;">Contact</div>
+    <div class="contact-info" style="color:#e0fbff;">
+      <p>Email: example@email.com</p>
+      <p>Instagram: @yourinsta</p>
+    </div>
     <button class="tech-back-btn" id="back-contact">&larr; Back</button>
-    <div class="contact-title">Contact</div>
   </div>
 
   <!-- Audio for Welcome Box Click -->
@@ -152,12 +197,11 @@
         }
       });
     });
-
     // Section toggling logic
     const mainNav = document.getElementById('main-nav');
     const aboutCiciSection = document.getElementById('about-cici-section');
-    const myWorkSection = document.querySelector('.mywork-section');
-    const contactSection = document.querySelector('.contact-section');
+    const myWorkSection = document.getElementById('mywork-section');
+    const contactSection = document.getElementById('contact-section');
     const mainWelcome = document.querySelector('.welcomebox');
 
     function showMain() {

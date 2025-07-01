@@ -391,10 +391,9 @@ body {
   }
 #about-cici-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
-  width: 100%;
 }
 .about-cici-container {
   display: flex;                 /* Arrange children in a row */
@@ -402,10 +401,11 @@ body {
   justify-content: center;
   gap: 28px;
   /* Optional: Add a little shadow for emphasis */
-  box-shadow: 0 4px 32px #06f4ff15;
+  margin-bottom: 20px; /* Space for the button below */
   background: #23272f;
   border-radius: 18px;
   padding: 32px 36px;
+  box-shadow: 0 4px 32px #06f4ff15;
 }
 .about-cici-img {
   display:flex;
@@ -427,13 +427,17 @@ body {
   font-size: 1rem;
 }
 @media (max-width: 600px) {
-  #about-cici-section {
-    min-height: 0;
-    padding-top: 32px;
-  }
   .about-cici-container {
     flex-direction: column;
     padding: 18px 8px;
+    margin-bottom: 0;
   }
-}
+  #about-cici-section {
+    padding-top: 32px;
+  }
+  .tech-back-btn {
+    order: 2; /* Ensure it's after the container */
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
 }

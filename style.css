@@ -449,15 +449,27 @@ body {
     font-size: 0.83rem;
   }
   #about-cici-section {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   .about-cici-container {
-    flex-direction: column;
-    padding: 18px 8px;
-    margin-bottom: 0;
+     /* Adjust width as desired */
+  width: 600px;            /* Example: fixed width */
+  max-width: 90vw;         /* Responsive on smaller screens */
+  margin: 0 auto;          /* Center horizontally (redundant with flex above but safe) */
+  /* Existing styles below */
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  border-radius: 16px;
+  border: 2.5px solid #00f6ff44;
+  box-shadow: 0 4px 32px #06f4ff15;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
   }
   .about-cici-img {
     width: 200px;
@@ -477,9 +489,10 @@ body {
     height: 200px;
   }
   .about-cici-container {
+    width: 98vw;
+    max-width: 99vw;
     flex-direction: column;
-    padding: 10px 4px;
-    margin-bottom: 0;
+    padding: 18px 8px;
   }
   #about-cici-section {
     padding-top: 24px;

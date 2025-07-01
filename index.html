@@ -1,175 +1,487 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Cimax Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#23272f">
-  <!-- Orbitron font for tech/AI style -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .hidden { display: none !important; }
-  </style>
-</head>
-<body>
-  <!-- Mindmap Navigation -->
-  <div class="mindmap-nav">
-    <a href="#about" class="mindmap-btn btn-about">
-      About CiCi
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-    <a href="#work" class="mindmap-btn btn-work">
-      My Work
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-    <a href="#contact" class="mindmap-btn btn-contact">
-      Contact
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-  </div>
-  
-  <!-- Welcome Box -->
-  <div class="welcomebox">
-    <div class="welcome-line">Welcome to</div>
-    <div class="studio-line">CIMAX Studio</div>
-    <div class="quote">Ideas become interfaces. Feelings become flow.</div>
-  </div>
-  
-  <!-- About Section -->
-  <div id="about-cici-section" class="hidden">
-    <div class="about-cici-container">
-      <img class="about-cici-img" src="pictures/profile webpic.jpg" alt="CiCi's photo" />
-      <div class="about-cici-box">
-        <p>
-          Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
-          Cimax is where ideas become interfaces, and feelings become flow.<br><br>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, exploring cybersecurity, or building mindful digital spaces, Cimax is my playground for creativity and transformation.<br><br>
-          Let’s co-create something meaningful.
-        </p>
-      </div>
-    </div>
-    <button class="tech-back-btn" id="back-about">&larr; Back</button>
-  </div>
-  <!-- My Work Section -->
-  <div id="mywork-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box">
-        <h2>My Work</h2>
-        <p>
-          <!-- Replace this with your actual work/projects content -->
-          Coming soon: portfolio, projects, and collaborations!
-        </p>
-      </div>
-    </div>
-    <button class="tech-back-btn" id="back-work">&larr; Back</button>
-  </div>
-  <!-- Contact Section -->
-  <div id="contact-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box">
-        <h2>Contact</h2>
-        <p>
-          <!-- Replace this with your actual contact info -->
-          Email: <a href="mailto:your@email.com" style="color:#00f6ff">your@email.com</a><br>
-          LinkedIn: <a href="#" style="color:#00f6ff">your-linkedin</a>
-        </p>
-      </div>
-    </div>
-    <button class="tech-back-btn" id="back-contact">&larr; Back</button>
-  </div>
+/* ==========================
+   ROOT VARIABLES
+   ========================== */
+:root {
+  --card-center-y-pc: 48vh;
+  --card-center-y-mob: 42vh;
+}
 
-  <!-- Audio for Welcome Box Click -->
-  <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
-  <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
-  
-  <!-- JavaScript for Sound and Section Toggle -->
-  <script>
-    // Sound for welcome box
-    const welcomeBox = document.querySelector('.welcomebox');
-    const welcomeSound = document.getElementById('welcome-sound');
-    if (welcomeBox && welcomeSound) {
-      welcomeBox.addEventListener('click', () => {
-        if (welcomeSound.paused || welcomeSound.ended) {
-          welcomeSound.currentTime = 0;
-          welcomeSound.play();
-        } else {
-          welcomeSound.pause();
-          welcomeSound.currentTime = 0;
-        }
-      });
-    }
-    // Sound for nav buttons
-    const mindmapButtons = document.querySelectorAll('.mindmap-btn');
-    const buttonSound = document.getElementById('button-sound');
-    mindmapButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (buttonSound) {
-          buttonSound.currentTime = 0;
-          buttonSound.play();
-        }
-      });
-    });
+/* ==========================
+   BODY/BACKGROUND
+   ========================== */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url('pictures/backgroundrobot3.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 
-    // Section toggling
-    const mainNav = document.querySelector('.mindmap-nav');
-    const aboutSection = document.getElementById('about-cici-section');
-    const workSection = document.getElementById('mywork-section');
-    const contactSection = document.getElementById('contact-section');
+/* ==========================
+   WELCOME BOX with Glitch + Shake Effect
+   ========================== */
+.welcomebox {
+  position: absolute;
+  left: 50%;
+  top: var(--card-center-y-pc);
+  transform: translate(-50%, -50%);
+  max-width: 440px;
+  width: 92vw;
+  min-width: 240px;
+  padding: 44px 24px 28px 24px;
+  background: rgba(25,30,40,0.38);
+  border-radius: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow:
+    0 2px 32px 0 rgba(0,255,255,0.10),
+    0 0 16px 3px rgba(0,255,255,0.22),
+    0 4px 64px 0 rgba(0,0,0,0.28);
+  border: 3px solid rgba(0,255,255,0.5);
+  backdrop-filter: blur(15px) saturate(155%);
+  -webkit-backdrop-filter: blur(15px) saturate(155%);
+  overflow: hidden;
+  z-index: 2;
+  animation: shake 2s infinite cubic-bezier(.36,.07,.19,.97) both;
+}
 
-    function showMain() {
-      document.querySelector('.welcomebox').classList.remove('hidden');
-      mainNav.classList.remove('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showAbout() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.remove('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showWork() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.remove('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showContact() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.remove('hidden');
-    }
+/* SHAKE Animation */
+@keyframes shake {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  10% { transform: translate(-51%, -52%) rotate(-1deg); }
+  20% { transform: translate(-49%, -48%) rotate(1deg); }
+  30% { transform: translate(-50.5%, -49.5%) rotate(0.6deg); }
+  40% { transform: translate(-49.5%, -51%) rotate(-0.6deg); }
+  50% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
 
-    document.querySelector('.btn-about').addEventListener('click', function(e) {
-      e.preventDefault();
-      showAbout();
-    });
-    document.querySelector('.btn-work').addEventListener('click', function(e) {
-      e.preventDefault();
-      showWork();
-    });
-    document.querySelector('.btn-contact').addEventListener('click', function(e) {
-      e.preventDefault();
-      showContact();
-    });
-    document.getElementById('back-about').addEventListener('click', showMain);
-    document.getElementById('back-work').addEventListener('click', showMain);
-    document.getElementById('back-contact').addEventListener('click', showMain);
-  </script>
-</body>
-</html>
+/* GLITCH EFFECT PSEUDO-ELEMENTS */
+.welcomebox::before,
+.welcomebox::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  border-radius: 26px;
+  z-index: 3;
+  opacity: 0.18;
+  mix-blend-mode: lighten;
+}
+
+.welcomebox::before {
+  background: linear-gradient(90deg, transparent 50%, #01faff44 90%, transparent 100%);
+  transform: skewY(-2deg);
+  animation: glitchTop 2.2s infinite linear alternate;
+}
+
+.welcomebox::after {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 2px,
+      #01faff11 4px,
+      transparent 6px
+    ),
+    linear-gradient(90deg, transparent 70%, #ff00cc44 100%);
+  transform: skewY(1deg);
+  animation: glitchBottom 1.8s infinite linear alternate-reverse, scanlines 0.22s infinite steps(2);
+  opacity: 0.25;
+}
+
+@keyframes glitchTop {
+  0%   { clip-path: inset(0 0 90% 0); transform: translate(-2px, -2px) skewY(-2deg);}
+  20%  { clip-path: inset(0 0 80% 0); transform: translate(2px, 2px) skewY(-2deg);}
+  40%  { clip-path: inset(0 0 70% 0); transform: translate(-3px, 1px) skewY(-2deg);}
+  60%  { clip-path: inset(0 0 60% 0); transform: translate(3px, -1px) skewY(-2deg);}
+  80%  { clip-path: inset(0 0 90% 0); transform: translate(-2px, 2px) skewY(-2deg);}
+  100% { clip-path: inset(0 0 90% 0); transform: translate(0, 0) skewY(-2deg);}
+}
+
+@keyframes glitchBottom {
+  0%   { clip-path: inset(90% 0 0 0); transform: translate(2px, 2px) skewY(1deg);}
+  15%  { clip-path: inset(80% 0 0 0); transform: translate(-1px, -2px) skewY(1deg);}
+  35%  { clip-path: inset(70% 0 0 0); transform: translate(3px, 2px) skewY(1deg);}
+  55%  { clip-path: inset(60% 0 0 0); transform: translate(-2px, 1px) skewY(1deg);}
+  75%  { clip-path: inset(90% 0 0 0); transform: translate(1px, -1px) skewY(1deg);}
+  100% { clip-path: inset(90% 0 0 0); transform: translate(0, 0) skewY(1deg);}
+}
+
+@keyframes scanlines {
+  to { background-position-y: 4px; }
+}
+
+/* WELCOMEBOX INNER GLOW EFFECTS */
+.welcomebox .welcome-line {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 2.2px;
+  color: #fff;
+  text-shadow: 0 1px 24px rgba(0,255,255,0.33), 0 1px 24px rgba(0,0,0,0.28);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  position: relative;
+  z-index: 4;
+}
+.welcomebox .studio-line {
+  margin: 0;
+  margin-top: 0.3em;
+  font-size: 3.3rem;
+  letter-spacing: 4px;
+  color: #01faff;
+  text-shadow: 0 0 38px #01faff, 0 1px 32px rgba(0,0,0,0.28);
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  white-space: nowrap;
+  position: relative;
+  z-index: 4;
+}
+.welcomebox .quote {
+  margin-top: 1.3em;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #dfe7fa;
+  opacity: 0.92;
+  text-shadow: 0 1px 10px rgba(0,255,255,0.17), 0 1px 10px rgba(0,0,0,0.15);
+  letter-spacing: 0.5px;
+  max-width: 90%;
+  position: relative;
+  z-index: 4;
+}
+
+/* ==========================
+   MINDMAP NAVIGATION AROUND WELCOMEBOX
+   ========================== */
+.mindmap-nav {
+  position: absolute;
+  left: 50%;
+  top: 48vh;
+  width: 500px;
+  height: 380px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+/* --- TECH/HUD BUTTON STYLE --- */
+.mindmap-btn {
+  position: absolute;
+  min-width: 128px;
+  padding: 16px 38px;
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  color: #00f6ff;
+  text-decoration: none;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.21rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2.5px solid #0ff;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
+  box-shadow:
+    0 0 14px 0 #00f6ff88,
+    0 0 2px 0 #222 inset;
+  z-index: 2;
+  pointer-events: auto;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.22s,
+    background 0.25s;
+}
+
+.mindmap-btn:before {
+  content: '';
+  position: absolute;
+  border: 2px solid #00f6ffcc;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
+  pointer-events: none;
+  transition: all 0.3s;
+  top: 6px; left: 7px; right: 7px; bottom: 6px;
+  opacity: 0.17;
+  filter: blur(2.5px);
+}
+
+/* HUD CORNERS */
+.mindmap-btn .hud-corner {
+  position: absolute;
+  width: 18px; height: 18px;
+  border: 2px solid #00f6ff;
+  opacity: 0.8;
+  z-index: 3;
+  pointer-events: none;
+}
+.mindmap-btn .hud-corner.tl { left: -3px; top: -3px; border-bottom: none; border-right: none; }
+.mindmap-btn .hud-corner.tr { right: -3px; top: -3px; border-bottom: none; border-left: none; }
+.mindmap-btn .hud-corner.bl { left: -3px; bottom: -3px; border-top: none; border-right: none; }
+.mindmap-btn .hud-corner.br { right: -3px; bottom: -3px; border-top: none; border-left: none; }
+
+.mindmap-btn:hover,
+.mindmap-btn:focus {
+  color: #0a1e28;
+  border-color: #7fffd4;
+  background: linear-gradient(90deg, #00f6ff55 15%, #00f6ff 100%);
+  box-shadow:
+    0 0 40px 8px #00f6ff99,
+    0 0 0 2px #222 inset;
+  animation: flickerBtn 0.17s 2 linear;
+}
+
+.mindmap-btn:hover:after,
+.mindmap-btn:focus:after {
+  opacity: 0.9;
+  box-shadow: 0 0 22px 6px #00f6ff55;
+}
+
+/* Flicker Animation on Hover */
+@keyframes flickerBtn {
+  0% { filter: brightness(2) blur(0.5px);}
+  30% { filter: brightness(0.5) blur(1.4px);}
+  60% { filter: brightness(2.5) blur(0.2px);}
+  100% { filter: brightness(1) blur(0px);}
+}
+
+/* ==========================
+   BUTTON POSITIONING
+   ========================== */
+.btn-about   { left: 50%; top: 0; transform: translate(-50%, -70px); }
+.btn-work    { left: 130%; top: 50%; transform: translate(-50%, -50%); }
+.btn-contact { left: -30%;  top: 50%; transform: translate(-50%, -50%); }
+
+/* ==========================
+   GLOWING TECHNOLOGY LINES (ARROWS)
+   ========================== */
+.mindmap-btn::after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  border: none;
+  border-radius: 0;
+  opacity: 0.7;
+  display: none;
+}
+
+.btn-about::after {
+  display: block;
+  left: 50%;
+  top: 125%;
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(180deg, #01faff 40%, transparent 70%);
+  transform: translate(-50%, 0);
+  box-shadow: 0 0 12px 2px #01faff88;
+}
+
+.btn-work::after {
+  display: block;
+  left: -42px;
+  top: 50%;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #01faff 40%, transparent 70%);
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px 2px #01faff88;
+}
+
+.btn-contact::after {
+  display: block;
+  left: 95%;
+  top: 50%;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(270deg, #01faff 40%, transparent 70%);
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px 2px #01faff88;
+}
+
+/* ==========================
+   ABOUT CICI CONTAINER (Techy, Transparent)
+   ========================== */
+.about-cici-container {
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  border-radius: 16px;
+  border: 2.5px solid #00f6ff44;
+  box-shadow: 0 4px 32px #06f4ff15;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+/* ==========================
+   ABOUT IMAGE & BOX
+   ========================== */
+.about-cici-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 14px #06f4ff33;
+  border: 2px solid #06f4ff;
+}
+
+.about-cici-box {
+  background: #21252c;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #06f4ff22;
+  color: #e0fbff;
+  padding: 20px;
+  max-width: 410px;
+  font-size: 1rem;
+}
+
+/* ==========================
+   BACK BUTTON (Techy Style)
+   ========================== */
+.tech-back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 38px;
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  color: #00f6ff;
+  border: 2.5px solid #0ff;
+  border-radius: 10px 22px 10px 22px/22px 10px 22px 10px;
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1.21rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow:
+    0 0 14px 0 #00f6ff88,
+    0 0 2px 0 #222 inset;
+  cursor: pointer;
+  margin-top: 28px;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.22s,
+    background 0.25s;
+}
+.tech-back-btn:hover,
+.tech-back-btn:focus {
+  color: #0a1e28;
+  border-color: #7fffd4;
+  background: linear-gradient(90deg, #00f6ff55 15%, #00f6ff 100%);
+  box-shadow:
+    0 0 40px 8px #00f6ff99,
+    0 0 0 2px #222 inset;
+}
+
+/* ==========================
+   RESPONSIVE: Adjust button positions on mobile
+   ========================== */
+@media (max-width: 700px) {
+  .mindmap-nav {
+    width: 96vw;
+    height: 320px;
+    left: 50%;
+    top: 53vh;
+    transform: translate(-50%, -50%);
+  }
+  .btn-about {
+    left: 50%; top: -20%; transform: translate(-50%, -60px);
+  }
+  .btn-work {
+    left: 50%; top: 60%;
+    transform: translate(-50%, -50%);
+  }
+  .btn-contact {
+    left: 50%; top: 80%;
+    transform: translate(-50%, -50%);
+  }
+  /* Fix mindmap lines/arrows for mobile layout */
+  .btn-about::after,
+  .btn-work::after,
+  .btn-contact::after {
+    left: 50%;
+    top: 100%;
+    width: 3px;
+    height: 30px;
+    background: linear-gradient(180deg, #01faff 40%, transparent 80%);
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .welcomebox {
+    max-width: 97vw;
+  }
+  .welcomebox .welcome-line {
+    font-size: 1.7rem;
+  }
+  .welcomebox .studio-line {
+    font-size: 2.2rem;
+  }
+  .welcomebox .quote {
+    font-size: 0.99rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .welcomebox {
+    top: var(--card-center-y-mob);
+    max-width: 99vw;
+    padding: 16px 2vw 10px 2vw;
+    border-radius: 18px;
+  }
+  .welcomebox .welcome-line {
+    font-size: 1.2rem;
+  }
+  .welcomebox .studio-line {
+    font-size: 1.5rem;
+  }
+  .welcomebox .quote {
+    font-size: 0.83rem;
+  }
+  #about-cici-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-cici-container {
+    flex-direction: column;
+    padding: 18px 8px;
+    margin-bottom: 0;
+  }
+  .about-cici-img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 12px;
+  }
+  .tech-back-btn {
+    order: 2;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-cici-img {
+    width: 150px;
+    height: 150px;
+  }
+  .about-cici-container {
+    flex-direction: column;
+    padding: 10px 4px;
+    margin-bottom: 0;
+  }
+  #about-cici-section {
+    padding-top: 24px;
+  }
+}

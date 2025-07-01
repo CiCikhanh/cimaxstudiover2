@@ -409,8 +409,8 @@ body {
 }
 .about-cici-img {
   display:flex;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 14px #06f4ff33;

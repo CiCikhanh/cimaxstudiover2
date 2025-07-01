@@ -307,99 +307,13 @@ body {
 }
 
 /* ==========================
-   RESPONSIVE: Adjust button positions on mobile
+   ABOUT CICI CONTAINER (Techy, Transparent)
    ========================== */
-@media (max-width: 700px) {
-  .mindmap-nav {
-    width: 96vw;
-    height: 320px;
-    left: 50%;
-    top: 53vh;
-    transform: translate(-50%, -50%);
-  }
-  .btn-about {
-    left: 50%; top: -20%; transform: translate(-50%, -60px);
-  }
-  .btn-work {
-    left: 50%; top: 60%;
-    transform: translate(-50%, -50%);
-  }
-  .btn-contact {
-    left: 50%; top: 80%;
-    transform: translate(-50%, -50%);
-  }
-
-  /* Fix mindmap lines/arrows for mobile layout */
-  .btn-about::after {
-    left: 50%;
-    top: 100%;
-    width: 3px;
-    height: 30px; /* shorter line for mobile */
-    background: linear-gradient(180deg, #01faff 40%, transparent 80%);
-    transform: translate(-50%, 0);
-  }
-  .btn-work::after {
-    left: 50%;
-    top: 100%;
-    width: 3px;
-    height: 30px;
-    background: linear-gradient(180deg, #01faff 40%, transparent 80%);
-    transform: translate(-50%, 0);
-  }
-  .btn-contact::after {
-    left: 50%;
-    top: 100%;
-    width: 3px;
-    height: 30px;
-    background: linear-gradient(180deg, #01faff 40%, transparent 80%);
-    transform: translate(-50%, 0);
-  }
-}
-
-/* ==========================
-   RESPONSIVE WELCOMEBOX
-   ========================== */
-@media (max-width: 1100px) {
-  .welcomebox {
-    max-width: 97vw;
-  }
-  .welcomebox .welcome-line {
-    font-size: 1.7rem;
-  }
-  .welcomebox .studio-line {
-    font-size: 2.2rem;
-  }
-  .welcomebox .quote {
-    font-size: 0.99rem;
-  }
-}
-@media (max-width: 750px) {
-  .welcomebox {
-    top: var(--card-center-y-mob);
-    max-width: 99vw;
-    padding: 16px 2vw 10px 2vw;
-    border-radius: 18px;
-  }
-  .welcomebox .welcome-line {
-    font-size: 1.2rem;
-  }
-  .welcomebox .studio-line {
-    font-size: 1.5rem;
-  }
-  .welcomebox .quote {
-    font-size: 0.83rem;
-  }
-#about-cici-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .about-cici-container {
   margin-bottom: 20px;
   background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
   border-radius: 16px;
-  border: 2.5px solid #00f6ff44; /* softer glowing border */
+  border: 2.5px solid #00f6ff44;
   box-shadow: 0 4px 32px #06f4ff15;
   padding: 32px 36px;
   display: flex;
@@ -407,9 +321,13 @@ body {
   justify-content: center;
   gap: 28px;
 }
+
+/* ==========================
+   ABOUT IMAGE & BOX
+   ========================== */
 .about-cici-img {
-  width: 450px;
-  height: 450px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 14px #06f4ff33;
@@ -425,19 +343,10 @@ body {
   max-width: 410px;
   font-size: 1rem;
 }
-@media (max-width: 600px) {
-   .about-cici-img {
-    width: 200px;
-    height: 200px;
-  }
-   .about-cici-container {
-    flex-direction: column;
-    padding: 18px 8px;
-    margin-bottom: 0;
-  }
-  #about-cici-section {
-    padding-top: 32px;
-  }
+
+/* ==========================
+   BACK BUTTON (Techy Style)
+   ========================== */
 .tech-back-btn {
   display: inline-flex;
   align-items: center;
@@ -462,7 +371,7 @@ body {
     border-color 0.2s,
     box-shadow 0.22s,
     background 0.25s;
- }
+}
 .tech-back-btn:hover,
 .tech-back-btn:focus {
   color: #0a1e28;
@@ -471,5 +380,108 @@ body {
   box-shadow:
     0 0 40px 8px #00f6ff99,
     0 0 0 2px #222 inset;
- }
+}
+
+/* ==========================
+   RESPONSIVE: Adjust button positions on mobile
+   ========================== */
+@media (max-width: 700px) {
+  .mindmap-nav {
+    width: 96vw;
+    height: 320px;
+    left: 50%;
+    top: 53vh;
+    transform: translate(-50%, -50%);
+  }
+  .btn-about {
+    left: 50%; top: -20%; transform: translate(-50%, -60px);
+  }
+  .btn-work {
+    left: 50%; top: 60%;
+    transform: translate(-50%, -50%);
+  }
+  .btn-contact {
+    left: 50%; top: 80%;
+    transform: translate(-50%, -50%);
+  }
+  /* Fix mindmap lines/arrows for mobile layout */
+  .btn-about::after,
+  .btn-work::after,
+  .btn-contact::after {
+    left: 50%;
+    top: 100%;
+    width: 3px;
+    height: 30px;
+    background: linear-gradient(180deg, #01faff 40%, transparent 80%);
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .welcomebox {
+    max-width: 97vw;
+  }
+  .welcomebox .welcome-line {
+    font-size: 1.7rem;
+  }
+  .welcomebox .studio-line {
+    font-size: 2.2rem;
+  }
+  .welcomebox .quote {
+    font-size: 0.99rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .welcomebox {
+    top: var(--card-center-y-mob);
+    max-width: 99vw;
+    padding: 16px 2vw 10px 2vw;
+    border-radius: 18px;
+  }
+  .welcomebox .welcome-line {
+    font-size: 1.2rem;
+  }
+  .welcomebox .studio-line {
+    font-size: 1.5rem;
+  }
+  .welcomebox .quote {
+    font-size: 0.83rem;
+  }
+  #about-cici-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-cici-container {
+    flex-direction: column;
+    padding: 18px 8px;
+    margin-bottom: 0;
+  }
+  .about-cici-img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 12px;
+  }
+  .tech-back-btn {
+    order: 2;
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-cici-img {
+    width: 200px;
+    height: 200px;
+  }
+  .about-cici-container {
+    flex-direction: column;
+    padding: 10px 4px;
+    margin-bottom: 0;
+  }
+  #about-cici-section {
+    padding-top: 24px;
+  }
 }

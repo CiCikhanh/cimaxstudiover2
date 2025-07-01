@@ -5,10 +5,11 @@
   <title>Cimax Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#23272f">
+  <!-- Orbitron font for tech/AI style -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Tech style for back button */
+    .hidden { display: none !important; }
     .tech-back-btn {
       display: inline-flex;
       align-items: center;
@@ -31,7 +32,6 @@
       color: #181a20;
       box-shadow: 0 0 24px #06f4ff99;
     }
-    /* About cici section image smaller */
     .about-cici-img {
       width: 90px;
       height: 90px;
@@ -55,13 +55,11 @@
       box-shadow: 0 2px 16px #06f4ff15;
       font-size: 1rem;
     }
-    /* Hide sections by default */
-    .hidden { display: none !important; }
   </style>
 </head>
 <body>
   <!-- Mindmap Navigation -->
-  <div class="mindmap-nav">
+  <div class="mindmap-nav" id="main-nav">
     <a href="#about" class="mindmap-btn btn-about">
       About CiCi
       <span class="hud-corner tl"></span>
@@ -92,12 +90,6 @@
     <div class="quote">Ideas become interfaces. Feelings become flow.</div>
   </div>
   
-  <!-- My Work Section -->
-
-
-  <!-- Contact Section -->
-  
-
   <!-- About CiCi Section -->
   <div id="about-cici-section" class="hidden">
     <button class="tech-back-btn" id="back-about">&larr; Back</button>
@@ -113,13 +105,28 @@
       </div>
     </div>
   </div>
-  
+  <!-- My Work Section -->
+  <div class="mywork-section hidden">
+    <button class="tech-back-btn" id="back-work">&larr; Back</button>
+    <div class="work-title">My Work</div>
+    <div class="work-list">
+      <div class="work-item">
+        <div class="work-img"></div>
+        <div class="work-desc">Project 1 description</div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact Section -->
+  <div class="contact-section hidden">
+    <button class="tech-back-btn" id="back-contact">&larr; Back</button>
+    <div class="contact-title">Contact</div>
+  </div>
+
   <!-- Audio for Welcome Box Click -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
-  
   <script>
-    // Play welcome sound on click
+    // Welcome sound
     const welcomeBox = document.querySelector('.welcomebox');
     const welcomeSound = document.getElementById('welcome-sound');
     if (welcomeBox && welcomeSound) {
@@ -133,8 +140,7 @@
         }
       });
     }
-
-    // Play button sound for all mindmap buttons
+    // Button sound
     const mindmapButtons = document.querySelectorAll('.mindmap-btn');
     const buttonSound = document.getElementById('button-sound');
     mindmapButtons.forEach(btn => {
@@ -146,39 +152,42 @@
       });
     });
 
-    // DOM references
-    const mainWelcome = document.querySelector('.welcomebox');
+    // Section toggling logic
+    const mainNav = document.getElementById('main-nav');
     const aboutCiciSection = document.getElementById('about-cici-section');
     const myWorkSection = document.querySelector('.mywork-section');
     const contactSection = document.querySelector('.contact-section');
+    const mainWelcome = document.querySelector('.welcomebox');
 
-    // Show/Hide helpers
     function showMain() {
       mainWelcome.classList.remove('hidden');
+      mainNav.classList.remove('hidden');
       aboutCiciSection.classList.add('hidden');
       myWorkSection.classList.add('hidden');
       contactSection.classList.add('hidden');
     }
     function showAbout() {
       mainWelcome.classList.add('hidden');
+      mainNav.classList.add('hidden');
       aboutCiciSection.classList.remove('hidden');
       myWorkSection.classList.add('hidden');
       contactSection.classList.add('hidden');
     }
     function showWork() {
       mainWelcome.classList.add('hidden');
+      mainNav.classList.add('hidden');
       aboutCiciSection.classList.add('hidden');
       myWorkSection.classList.remove('hidden');
       contactSection.classList.add('hidden');
     }
     function showContact() {
       mainWelcome.classList.add('hidden');
+      mainNav.classList.add('hidden');
       aboutCiciSection.classList.add('hidden');
       myWorkSection.classList.add('hidden');
       contactSection.classList.remove('hidden');
     }
 
-    // Navigation
     document.querySelector('.btn-about').addEventListener('click', function(e) {
       e.preventDefault();
       showAbout();
@@ -191,16 +200,9 @@
       e.preventDefault();
       showContact();
     });
-    // Back buttons
-    document.getElementById('back-about').addEventListener('click', function() {
-      showMain();
-    });
-    document.getElementById('back-work').addEventListener('click', function() {
-      showMain();
-    });
-    document.getElementById('back-contact').addEventListener('click', function() {
-      showMain();
-    });
+    document.getElementById('back-about').addEventListener('click', showMain);
+    document.getElementById('back-work').addEventListener('click', showMain);
+    document.getElementById('back-contact').addEventListener('click', showMain);
   </script>
 </body>
 </html>

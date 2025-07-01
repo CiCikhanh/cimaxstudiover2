@@ -140,7 +140,7 @@
   <!-- About CiCi Section -->
   <div id="about-cici-section" class="hidden">
     <div class="about-cici-container">
-      <img class="about-cici-img" src="pictures/profile webpic.jpeg" alt="CiCi's photo" />
+      <img class="about-cici-img" src="pictures/cici.jpg" alt="CiCi's photo" />
       <div class="about-cici-box">
         <p>
           Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
@@ -152,25 +152,92 @@
     </div>
     <button class="tech-back-btn" id="back-about">&larr; Back</button>
   </div>
-  <!-- My Work Section -->
-  <div class="section-content hidden" id="mywork-section">
-    <div class="work-title" style="color:#06f4ff; font-family:'Orbitron'; font-size:1.4rem; margin-bottom:24px;">My Work</div>
-    <div class="work-list" style="color:#e0fbff;">Describe your projects here</div>
-    <button class="tech-back-btn" id="back-work">&larr; Back</button>
-  </div>
-  <!-- Contact Section -->
-  <div class="section-content hidden" id="contact-section">
-    <div class="contact-title" style="color:#06f4ff; font-family:'Orbitron'; font-size:1.4rem; margin-bottom:24px;">Contact</div>
-    <div class="contact-info" style="color:#e0fbff;">
-      <p>Email: example@email.com</p>
-      <p>Instagram: @yourinsta</p>
-    </div>
-    <button class="tech-back-btn" id="back-contact">&larr; Back</button>
-  </div>
 
   <!-- Audio for Welcome Box Click -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
+
+  <style>
+    .hidden { display: none !important; }
+    .tech-back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 20px;
+      background: #181a20;
+      color: #06f4ff;
+      border: 2px solid #06f4ff;
+      border-radius: 9px;
+      font-family: 'Orbitron', 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 28px;
+      box-shadow: 0 0 12px #06f4ff44;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tech-back-btn:hover {
+      background: #06f4ff;
+      color: #181a20;
+      box-shadow: 0 0 24px #06f4ff99;
+    }
+    #about-cici-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      width: 100%;
+      padding-top: 40px;
+    }
+    .about-cici-container {
+      background: #1b1f27;
+      border-radius: 16px;
+      box-shadow: 0 4px 32px #06f4ff15;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .about-cici-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 14px #06f4ff33;
+      border: 2px solid #06f4ff;
+    }
+    .about-cici-box {
+      background: #21252c;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px #06f4ff22;
+      color: #e0fbff;
+      padding: 20px;
+      max-width: 410px;
+      font-size: 1rem;
+    }
+    @media (max-width: 600px) {
+      #about-cici-section {
+        min-height: 0;
+        padding-top: 32px;
+      }
+      .about-cici-container {
+        flex-direction: column;
+        padding: 18px 8px;
+        margin-bottom: 0;
+      }
+      .about-cici-img {
+        width: 210px;
+        height: 210px;
+        margin-bottom: 12px;
+      }
+      .tech-back-btn {
+        order: 2;
+        margin-top: 20px;
+        margin-bottom: 0;
+      }
+    }
+  </style>
   <script>
     // Welcome sound
     const welcomeBox = document.querySelector('.welcomebox');
@@ -200,54 +267,23 @@
     // Section toggling logic
     const mainNav = document.getElementById('main-nav');
     const aboutCiciSection = document.getElementById('about-cici-section');
-    const myWorkSection = document.getElementById('mywork-section');
-    const contactSection = document.getElementById('contact-section');
     const mainWelcome = document.querySelector('.welcomebox');
 
     function showMain() {
       mainWelcome.classList.remove('hidden');
       mainNav.classList.remove('hidden');
       aboutCiciSection.classList.add('hidden');
-      myWorkSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
     }
     function showAbout() {
       mainWelcome.classList.add('hidden');
       mainNav.classList.add('hidden');
       aboutCiciSection.classList.remove('hidden');
-      myWorkSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
     }
-    function showWork() {
-      mainWelcome.classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutCiciSection.classList.add('hidden');
-      myWorkSection.classList.remove('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showContact() {
-      mainWelcome.classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutCiciSection.classList.add('hidden');
-      myWorkSection.classList.add('hidden');
-      contactSection.classList.remove('hidden');
-    }
-
     document.querySelector('.btn-about').addEventListener('click', function(e) {
       e.preventDefault();
       showAbout();
     });
-    document.querySelector('.btn-work').addEventListener('click', function(e) {
-      e.preventDefault();
-      showWork();
-    });
-    document.querySelector('.btn-contact').addEventListener('click', function(e) {
-      e.preventDefault();
-      showContact();
-    });
     document.getElementById('back-about').addEventListener('click', showMain);
-    document.getElementById('back-work').addEventListener('click', showMain);
-    document.getElementById('back-contact').addEventListener('click', showMain);
   </script>
 </body>
 </html>

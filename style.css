@@ -397,7 +397,7 @@ body {
 }
 .about-cici-container {
   margin-bottom: 20px; /* Space for the button below */
-  background: rgba(25,30,40,0.38);
+  background: transparent 80%;
   border:3px solid rgba(0,255,255,0.5);
   box-shadow:  
     0 2px 32px 0 rgba(0,255,255,0.10),

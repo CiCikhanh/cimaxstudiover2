@@ -255,8 +255,8 @@ body {
 /* ==========================
    BUTTON POSITIONING
    ========================== */
-.btn-about { left: 50%; top: 0; transform: translate(-50%, -70px); }
-.btn-services { left: 130%; top: 50%; transform: translate(-50%, -50%); }
+.btn-about   { left: 50%; top: 0; transform: translate(-50%, -70px); }
+.btn-work    { left: 130%; top: 50%; transform: translate(-50%, -50%); }
 .btn-contact { left: -30%;  top: 50%; transform: translate(-50%, -50%); }
 
 /* ==========================
@@ -284,7 +284,7 @@ body {
   box-shadow: 0 0 12px 2px #01faff88;
 }
 
-.btn-services::after {
+.btn-work::after {
   display: block;
   left: -42px;
   top: 50%;
@@ -310,7 +310,7 @@ body {
    CENTERED SECTION MODALS (ABOUT, WORK, CONTACT)
    ========================== */
 #about-cici-section,
-#services-section,
+#mywork-section,
 #contact-section {
   min-height: 100vh;
   width: 100vw;
@@ -455,7 +455,7 @@ body {
   .btn-about {
     left: 50%; top: -20%; transform: translate(-50%, -60px);
   }
-  .btn-services {
+  .btn-work {
     left: 50%; top: 60%;
     transform: translate(-50%, -50%);
   }
@@ -465,7 +465,7 @@ body {
   }
   /* Fix mindmap lines/arrows for mobile layout */
   .btn-about::after,
-  .btn-services::after,
+  .btn-work::after,
   .btn-contact::after {
     left: 50%;
     top: 100%;
@@ -476,7 +476,7 @@ body {
   }
 
   #about-cici-section,
-  #services-section,
+  #mywork-section,
   #contact-section {
     padding-top: 24px;
     justify-content: flex-start;

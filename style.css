@@ -307,6 +307,25 @@ body {
 }
 
 /* ==========================
+   CENTERED SECTION MODALS (ABOUT, WORK, CONTACT)
+   ========================== */
+#about-cici-section,
+#mywork-section,
+#contact-section {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background: none; /* change to rgba(0,0,0,0.2) if you want modal effect */
+}
+
+/* ==========================
    ABOUT CICI CONTAINER (Techy, Transparent)
    ========================== */
 .about-cici-container {
@@ -335,20 +354,22 @@ body {
 }
 
 .about-cici-box {
-  background: #21252c;
+  background: rgba(20, 22, 28, 0.93); /* <--- darker, more opaque than outside */
   border-radius: 10px;
   box-shadow: 0 2px 16px #06f4ff22;
   color: #e0fbff;
   padding: 20px;
   max-width: 410px;
   font-size: 1rem;
+  text-align: center;
 }
 
 /* ==========================
-   BACK BUTTON (Techy Style)
+   BACK BUTTON (Techy Style, Centered)
    ========================== */
 .tech-back-btn {
-  display: inline-flex;
+  margin: 2rem auto 0 auto;
+  display: block;
   align-items: center;
   padding: 16px 38px;
   background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
@@ -365,7 +386,6 @@ body {
     0 0 14px 0 #00f6ff88,
     0 0 2px 0 #222 inset;
   cursor: pointer;
-  margin-top: 28px;
   transition:
     color 0.2s,
     border-color 0.2s,
@@ -415,6 +435,29 @@ body {
     background: linear-gradient(180deg, #01faff 40%, transparent 80%);
     transform: translate(-50%, 0);
   }
+
+  #about-cici-section,
+  #mywork-section,
+  #contact-section {
+    padding-top: 24px;
+    justify-content: flex-start;
+  }
+  .about-cici-container {
+    flex-direction: column;
+    width: 98vw;
+    max-width: 99vw;
+    gap: 16px;
+    padding: 18px 8px;
+  }
+  .about-cici-img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 12px;
+  }
+  .tech-back-btn {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -448,68 +491,11 @@ body {
   .welcomebox .quote {
     font-size: 0.83rem;
   }
-  #about-cici-section {
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertical center */
-  align-items: center;     /* horizontal center */
-  position: fixed;         /* keeps centered even if page scrolls */
-  left: 0;
-  top: 0;
-  z-index: 100;
-  background: none; /* or rgba(0,0,0,0.1) for modal effect */
-  }
-  .about-cici-container {
-     /* Adjust width as desired */
-  width: 600px;            /* Example: fixed width */
-  top: 100px;
-  max-width: 90vw;         /* Responsive on smaller screens */
-  margin: 0 auto;          /* Center horizontally (redundant with flex above but safe) */
-  /* Existing styles below */
-  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
-  border-radius: 16px;
-  border: 2.5px solid #00f6ff44;
-  box-shadow: 0 4px 32px #06f4ff15;
-  padding: 100px 136px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  }
-  .about-cici-img {
-  width: 260px;
-  height: 260px;
-  margin-bottom: 12px;
-  }
-  .about-cici-box {
-  background: rgba(30, 32, 38, 0.89); /* darker and more opaque than outside */
-  border-radius: 10px;
-  box-shadow: 0 2px 16px #06f4ff22;
-  color: #e0fbff;
-  padding: 20px;
-  max-width: 410px;
-  font-size: 1rem;
-  }
-  .tech-back-btn {
-  margin: 2rem auto 0 auto;
-  display: block;
-  }
 }
 
 @media (max-width: 600px) {
   .about-cici-img {
-    width: 200px;
-    height: 200px;
-  }
-  .about-cici-container {
-    width: 98vw;
-    max-width: 99vw;
-    flex-direction: column;
-    padding: 18px 8px;
-  }
-  #about-cici-section {
-    padding-top: 24px;
+    width: 140px;
+    height: 140px;
   }
 }

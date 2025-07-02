@@ -119,7 +119,16 @@
         }
       });
     });
-
+    // Add sound to all back buttons
+    const backButtons = document.querySelectorAll('.tech-back-btn');
+    backButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (buttonSound) {
+          buttonSound.currentTime = 0;
+          buttonSound.play();
+        }
+      });
+    });
     // Section toggling
     const mainNav = document.querySelector('.mindmap-nav');
     const aboutSection = document.getElementById('about-cici-section');

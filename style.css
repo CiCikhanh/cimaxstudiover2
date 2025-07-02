@@ -353,15 +353,50 @@ body {
   border: 2px solid #06f4ff;
 }
 
+/* ==========================
+   METALLIC SILVER CARD STYLE FOR .about-cici-box (DESKTOP & MOBILE)
+   ========================== */
 .about-cici-box {
-  background: rgba(20, 22, 28, 0.93); /* <--- darker, more opaque than outside */
-  border-radius: 10px;
-  box-shadow: 0 2px 16px #06f4ff22;
-  color: #e0fbff;
-  padding: 20px;
-  max-width: 410px;
+  background: 
+    linear-gradient(135deg, #e0e0e0 0%, #b4b4b4 40%, #e0e0e0 80%, #ffffff 100%),
+    repeating-linear-gradient(120deg, #fafafa 0px, #bcbcbc 6px, #e0e0e0 12px, #bcbcbc 18px, #fafafa 24px);
+  background-blend-mode: lighten;
+  border-radius: 16px;
+  box-shadow:
+    0 2px 16px #06f4ff22,
+    0 6px 40px 0 #3338,
+    0 1.5px 5px #fff7 inset;
+  color: #181a1b;
+  padding: 28px;
+  max-width: 420px;
   font-size: 1rem;
   text-align: center;
+  border: 2.5px solid #e5e5e5;
+  position: relative;
+  overflow: hidden;
+}
+.about-cici-box::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: -40%;
+  top: 10%;
+  width: 180%;
+  height: 30%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.0) 60%);
+  transform: rotate(-8deg);
+  filter: blur(2.5px);
+  opacity: 0.8;
+}
+.about-cici-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
+  mix-blend-mode: overlay;
+  opacity: 0.25;
+  pointer-events: none;
+  border-radius: 16px;
 }
 
 /* ==========================
@@ -453,52 +488,6 @@ body {
     width: 200px;
     height: 200px;
     margin-bottom: 12px;
-  }
-   .about-cici-box {
-  background: 
-    linear-gradient(135deg, #e0e0e0 0%, #b4b4b4 40%, #e0e0e0 80%, #ffffff 100%),
-    repeating-linear-gradient(120deg, #fafafa 0px, #bcbcbc 6px, #e0e0e0 12px, #bcbcbc 18px, #fafafa 24px);
-  background-blend-mode: lighten;
-  border-radius: 16px;
-  box-shadow:
-    0 2px 16px #06f4ff22,
-    0 6px 40px 0 #3338,
-    0 1.5px 5px #fff7 inset;
-  color: #181a1b;
-  padding: 28px;
-  max-width: 420px;
-  font-size: 1rem;
-  text-align: center;
-  border: 2.5px solid #e5e5e5;
-  position: relative;
-  overflow: hidden;
- }
-
-/* Simulate a glint/light reflection */
-.about-cici-box::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  left: -40%;
-  top: 10%;
-  width: 180%;
-  height: 30%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.0) 60%);
-  transform: rotate(-8deg);
-  filter: blur(2.5px);
-  opacity: 0.8;
- }
-
-/* Optional: add a bit of "metal noise" for realism */
-.about-cici-box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("https://www.transparenttextures.com/patterns/brushed-alum.png"); /* subtle metal texture */
-  mix-blend-mode: overlay;
-  opacity: 0.25;
-  pointer-events: none;
-  border-radius: 16px;
   }
   .tech-back-btn {
     margin-top: 20px;

@@ -458,6 +458,7 @@ body {
   .about-cici-container {
      /* Adjust width as desired */
   width: 600px;            /* Example: fixed width */
+  top: 100px;
   max-width: 90vw;         /* Responsive on smaller screens */
   margin: 0 auto;          /* Center horizontally (redundant with flex above but safe) */
   /* Existing styles below */
@@ -477,10 +478,9 @@ body {
     margin-bottom: 12px;
   }
   .tech-back-btn {
-    order: 2;
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
+  margin: 2rem auto 0 auto;
+  display: block;
+ }
 }
 
 @media (max-width: 600px) {

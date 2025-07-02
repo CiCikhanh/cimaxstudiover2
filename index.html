@@ -22,8 +22,8 @@
       <span class="hud-corner bl"></span>
       <span class="hud-corner br"></span>
     </a>
-    <a href="#work" class="mindmap-btn btn-work">
-      My Work
+    <a href="#services" class="mindmap-btn btn-work">
+      My Services
       <span class="hud-corner tl"></span>
       <span class="hud-corner tr"></span>
       <span class="hud-corner bl"></span>
@@ -48,31 +48,38 @@
   <!-- About Section -->
   <div id="about-cici-section" class="hidden">
     <div class="about-cici-container">
-      <img class="about-cici-img" src="pictures/profile webpic small.jpg" alt="CiCi's photo" />
+      <img class="about-cici-img" src="pictures/profile webpic.jpeg" alt="CiCi's photo" />
       <div class="about-cici-box">
         <p>
           Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
           Cimax is where ideas become interfaces, and feelings become flow.<br><br>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, exploring cybersecurity, or building mindful digital spaces, Cimax is my playground for creativity and transformation.<br><br>
+          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital platforms, or immersive apps, I strive to make every pixel purposeful and every interaction intuitive.<br><br>
           Let’s co-create something meaningful.
         </p>
       </div>
     </div>
     <button class="tech-back-btn" id="back-about">&larr; Back</button>
   </div>
-  <!-- My Work Section -->
+  <!-- My Services Section -->
   <div id="mywork-section" class="hidden">
     <div class="about-cici-container">
       <div class="about-cici-box">
-        <h2>My Work</h2>
+        <h2>My Services</h2>
         <p>
-         Versatile Full-Stack & Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
-         What I Offer
-         Full-Stack Web Development 
-         iOS & Android Apps (Flutter)
-         Consultancy & Advisory: Company profiles, publishing workflows, digital strategy
-         Key Strengths: API design, performance optimization, UX/UI intergration 
+          Versatile Full-Stack & Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
         </p>
+        <h3>What I Offer</h3>
+        <ul>
+          <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
+          <li><strong>iOS & Android Apps:</strong> (Flutter)</li>
+          <li><strong>Consultancy & Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
+        </ul>
+        <h3>Key Strengths</h3>
+        <ul>
+          <li>API design</li>
+          <li>Performance optimization</li>
+          <li>UX/UI integration</li>
+        </ul>
       </div>
     </div>
     <button class="tech-back-btn" id="back-work">&larr; Back</button>
@@ -83,7 +90,6 @@
       <div class="about-cici-box">
         <h2>Contact</h2>
         <p>
-          <!-- Replace this with your actual contact info -->
           Email: <a href="mailto:your@email.com" style="color:#00f6ff">your@email.com</a><br>
           LinkedIn: <a href="#" style="color:#00f6ff">your-linkedin</a>
         </p>
@@ -112,8 +118,9 @@
         }
       });
     }
-    // Sound for nav buttons
+    // Sound for nav and back buttons
     const mindmapButtons = document.querySelectorAll('.mindmap-btn');
+    const backButtons = document.querySelectorAll('.tech-back-btn');
     const buttonSound = document.getElementById('button-sound');
     mindmapButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -123,8 +130,6 @@
         }
       });
     });
-    // Add sound to all back buttons
-    const backButtons = document.querySelectorAll('.tech-back-btn');
     backButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         if (buttonSound) {
@@ -133,6 +138,7 @@
         }
       });
     });
+
     // Section toggling
     const mainNav = document.querySelector('.mindmap-nav');
     const aboutSection = document.getElementById('about-cici-section');

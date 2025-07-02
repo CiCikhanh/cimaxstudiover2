@@ -357,10 +357,14 @@ body {
    METALLIC SILVER CARD STYLE FOR .about-cici-box (DESKTOP & MOBILE)
    ========================== */
 .about-cici-box {
-  background: 
-    linear-gradient(135deg, #e0e0e0 0%, #b4b4b4 40%, #e0e0e0 80%, #ffffff 100%),
-    repeating-linear-gradient(120deg, #fafafa 0px, #bcbcbc 6px, #e0e0e0 12px, #bcbcbc 18px, #fafafa 24px);
-  background-blend-mode: lighten;
+  background: linear-gradient(
+    135deg,
+    #e0e0e0 0%,
+    #c0c0c0 35%,
+    #f4f4f4 55%,
+    #b0b0b0 80%,
+    #dddddd 100%
+  );
   border-radius: 16px;
   box-shadow:
     0 2px 16px #06f4ff22,
@@ -383,10 +387,10 @@ body {
   top: 10%;
   width: 180%;
   height: 30%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.0) 60%);
+  background: linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.0) 60%);
   transform: rotate(-8deg);
   filter: blur(2.5px);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 .about-cici-box::before {
   content: "";
@@ -394,10 +398,10 @@ body {
   inset: 0;
   background: url("https://www.transparenttextures.com/patterns/brushed-alum.png");
   mix-blend-mode: overlay;
-  opacity: 0.25;
+  opacity: 0.13;
   pointer-events: none;
   border-radius: 16px;
-} 
+}
 
 /* ==========================
    BACK BUTTON (Techy Style, Centered)

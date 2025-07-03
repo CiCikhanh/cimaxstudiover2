@@ -5,6 +5,23 @@
   --card-center-y-pc: 48vh;
   --card-center-y-mob: 42vh;
 }
+/* ==========================
+   UTILITY CLASSES
+   ========================== */
+.hidden { display: none !important; }
+.back-bottom-center {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  z-index: 3500;
+}
+.back-overlay-pos {
+  position: fixed;
+  top: 24px;
+  left: 36px;
+  z-index: 3500;
+}
 
 /* ==========================
    BODY/BACKGROUND
@@ -496,6 +513,9 @@ body {
     margin-top: 20px;
     margin-bottom: 0;
   }
+  .back-bottom-center {
+    bottom: 16px;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -539,13 +559,6 @@ body {
 /* ==========================
    services:back button
    ========================== */
-.back-bottom-center {
-  position: fixed;
-  left: 50%;
-  bottom: 40px;    /* Distance from the bottom edge */
-  transform: translateX(-50%);
-  z-index: 3500;   /* Ensure it's above overlays */
-}
 @media (max-width: 600px) {
   .back-bottom-center {
     bottom: 16px;

@@ -32,98 +32,79 @@
       width: 100vw;
       height: 100vh;
     }
-    .services-left, .services-right {
-      max-width: 400px;
-      min-width: 260px;
-      margin: 0 24px;
-      padding: 36px 30px;
+    /* --------- Custom Silver-Glass Content Box Style --------- */
+    .services-content-box {
+      max-width: 800px;
+      min-width: 320px;
+      padding: 38px 32px 34px 32px;
       color: #23272f;
-      font-family: inherit;
-      display: none;
-      animation: fadeIn 0.4s;
-      background: linear-gradient(135deg, #f8fafd 0%, #e4e7ec 55%, #cfd3db 100%);
-      border-radius: 28px;
+      font-size: 1.32rem;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      background: 
+        linear-gradient(135deg, #f2f5f6 60%, #e2e4e7 100%) padding-box,
+        linear-gradient(135deg, #00f6ff 3%, #b7e6ff 30%, #fff 55%, #00f6ff 100%) border-box;
+      border: 3px solid transparent;
+      border-radius: 24px;
       box-shadow:
         0 4px 32px #23272f18,
         0 1.5px 8px #23272f12,
         0 0 0 3px #b7e6ff88,
-        0 0 24px 4px #00f6ff55;
+        0 0 24px 4px #00f6ff44;
       position: relative;
+      text-align: center;
+      margin: 0 auto;
+      transition: box-shadow 0.2s;
+      backdrop-filter: blur(0.5px);
     }
-    .services-left:before, .services-right:before {
+    .services-content-box::before {
       content: "";
       position: absolute;
       inset: -3px;
-      border-radius: 32px;
+      border-radius: 27px;
       pointer-events: none;
-      z-index: 2;
-      background:
-        linear-gradient(135deg, #00f6ff 0%, #b7e6ff 40%, #fff 80%, #00f6ff 100%);
-      opacity: 0.7;
-      filter: blur(3px);
+      z-index: 1;
+      background: linear-gradient(135deg, #00f6ff88 0%, #b7e6ff66 40%, #fff0 80%, #00f6ff77 100%);
+      opacity: 0.60;
+      filter: blur(2px);
       transition: opacity 0.2s;
-      box-shadow:
-        0 0 20px 3px #00f6ff99,
-        0 0 40px 8px #fff8;
-      border: 2.5px solid transparent;
     }
-    .services-left:hover:before, .services-right:hover:before {
-      opacity: 1;
-      filter: blur(1.5px) brightness(1.15);
+    .services-content-box:hover::before {
+      opacity: 0.9;
+      filter: blur(1.1px) brightness(1.08);
     }
-    .services-left, .services-right {
-      border: 2.5px solid #00f6ff77;
-      box-sizing: border-box;
-    }
-    #robotwavehand-center {
-      width: 220px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin: 0 32px;
-      animation: fadeIn 0.6s;
-      z-index: 3200;
-      background: none;
-      border-radius: 50%;
-      box-shadow: 0 2px 24px #00f6ff44, 0 2px 10px #23272f13;
-      border: 3px solid #00f6ff;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    #robotwavehand-center:hover {
-      filter: brightness(1.12) drop-shadow(0 2px 24px #3a8cff32);
-      background: #f0f3faee;
-      box-shadow: 0 0 32px 8px #00f6ff88, 0 4px 32px #23272f18;
-      border-color: #fff;
-    }
-    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @media (max-width: 900px) {
-      .services-left, .services-right { 
-        max-width: 170px; min-width: 90px; padding: 12px 6px; font-size: 13px; 
-      }
-      #robotwavehand-center { min-width: 80px; min-height: 80px; width: 120px; height: 120px; }
-    }
+    /* --------- End Content Box Style --------- */
+
+    /* Back Button matches main nav buttons */
     #back-services-overlay {
       position: fixed;
-      top: 24px;
-      left: 36px;
+      top: 28px;
+      left: 40px;
       z-index: 3500;
-      padding: 6px 18px;
-      background: #e4e7ec;
+      padding: 11px 24px;
+      background: linear-gradient(90deg,#00f6ff 5%,#b7e6ff 100%);
       color: #23272f;
-      border-radius: 8px;
-      font-size: 20px;
+      border-radius: 14px;
+      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
       border: none;
       cursor: pointer;
-      box-shadow: 0 2px 10px #23272f10;
-      border: 2px solid #00f6ff;
-      text-shadow: 0 0 6px #00f6ffbb;
-      transition: background 0.2s, border-color 0.2s;
+      box-shadow: 0 2px 18px #00f6ff32, 0 1.5px 8px #23272f12;
+      border-bottom: 3px solid #00bbff;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 8px #fff9, 0 0 2px #b7e6ff99;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      outline: none;
     }
-    #back-services-overlay:hover {
-      background: #d5d9e1;
-      border-color: #fff;
+    #back-services-overlay:hover, #back-services-overlay:focus {
+      background: linear-gradient(90deg,#00bbff 5%,#e2e4e7 100%);
+      color: #0a3c53;
+      box-shadow: 0 2px 24px #00f6ff66, 0 2px 10px #23272f13;
+      border-bottom: 3px solid #00f6ff;
+    }
+    @media (max-width: 900px) {
+      .services-content-box { font-size: 1rem; padding: 18px 7px 16px 7px; }
+      #back-services-overlay { font-size: 1em; top: 10px; left: 10px; padding: 7px 13px;}
     }
   </style>
 </head>
@@ -217,25 +198,15 @@
   <div id="services-flex-overlay">
     <button id="back-services-overlay" class="tech-back-btn">&larr; Back</button>
     <div class="services-flex-content">
-      <div class="services-left" id="overlay-left">
+      <div class="services-content-box" id="overlay-content">
         <p>
-          Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
+          Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
+          Cimax is where ideas become interfaces, and feelings become flow.
         </p>
-      </div>
-      <div id="robotwavehand-center"></div>
-      <div class="services-right" id="overlay-right">
-        <h3>What I Offer</h3>
-        <ul>
-          <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
-          <li><strong>iOS &amp; Android Apps:</strong> (Flutter)</li>
-          <li><strong>Consultancy &amp; Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
-        </ul>
-        <h3>Key Strengths</h3>
-        <ul>
-          <li>API design</li>
-          <li>Performance optimization</li>
-          <li>UX/UI integration</li>
-        </ul>
+        <p>
+          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital products, or immersive campaigns, I strive to make every pixel purposeful.<br>
+          Let’s co-create something meaningful.
+        </p>
       </div>
     </div>
   </div>
@@ -244,7 +215,6 @@
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script>
     // Sound for welcome box
     const welcomeBox = document.querySelector('.welcomebox');
@@ -340,50 +310,19 @@
     document.getElementById('back-contact').addEventListener('click', showMain);
 
     // === SERVICES FLEX OVERLAY LOGIC ===
-    let robotAnimLoaded = false;
-    function loadRobotAnim() {
-      if (robotAnimLoaded) return;
-      lottie.loadAnimation({
-        container: document.getElementById('robotwavehand-center'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'animations/robotwavehand.json'
-      });
-      robotAnimLoaded = true;
-    }
-
     const servicesOverlay = document.getElementById('services-flex-overlay');
-    const overlayLeft = document.getElementById('overlay-left');
-    const overlayRight = document.getElementById('overlay-right');
-    const robotCenter = document.getElementById('robotwavehand-center');
     const backOverlayBtn = document.getElementById('back-services-overlay');
 
-    overlayLeft.style.display = "none";
-    overlayRight.style.display = "none";
-
     function showServicesOverlay() {
-      overlayLeft.style.display = "none";
-      overlayRight.style.display = "none";
       servicesOverlay.style.display = "flex";
-      loadRobotAnim();
     }
     function hideServicesOverlay() {
       servicesOverlay.style.display = "none";
-      overlayLeft.style.display = "none";
-      overlayRight.style.display = "none";
     }
-    // Robot icon click: reveal left and right
-    robotCenter.addEventListener('click', function() {
-      overlayLeft.style.display = "block";
-      overlayRight.style.display = "block";
-    });
-    // Back button
     backOverlayBtn.addEventListener('click', function() {
       hideServicesOverlay();
       showMain();
     });
-    // Esc to close
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && servicesOverlay.style.display === 'flex') {
         hideServicesOverlay();

@@ -8,95 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Utility for demo: Hide sections by default */
     .hidden { display: none !important; }
-    body {
-      background: url('pictures/backgroundrobot3.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-    #services-flex-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      z-index: 3000;
-      justify-content: center;
-      align-items: center;
-    }
-    .services-flex-content {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-    }
-    /* --- Silver Gradient, Transparent Frame (Left & Right Boxes) --- */
-    .services-box {
-      max-width: 400px;
-      min-width: 260px;
-      margin: 0 24px;
-      padding: 38px 32px 34px 32px;
-      color: #23272f;
-      font-size: 1.19rem;
-      font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #f2f5f6 60%, #e2e4e7 100%);
-      border-radius: 20px;
-      border: 3px solid rgba(0,246,255,0.14);
-      box-shadow: 0 8px 32px #23272f1c, 0 1.5px 8px #23272f12;
-      position: relative;
-      text-align: center;
-      transition: box-shadow 0.2s;
-      backdrop-filter: blur(0.5px);
-      /* Subtle outside glow for tech effect */
-      outline: 2.5px solid rgba(0,246,255,0.20);
-      outline-offset: 0px;
-    }
-    .services-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      border: 2.5px solid rgba(0,246,255,0.16);
-      pointer-events: none;
-      z-index: 1;
-      background: none;
-    }
-    .services-box:hover, .services-box:focus {
-      box-shadow: 0 0 48px 6px #00f6ff55, 0 4px 32px #23272f1c;
-      outline-color: #00f6ff;
-    }
-    /* --- End Silver Box --- */
-
-    #robotwavehand-center {
-      width: 220px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin: 0 32px;
-      animation: fadeIn 0.6s;
-      z-index: 3200;
-      background: none;
-      border-radius: 50%;
-      box-shadow: 0 2px 24px #00f6ff44, 0 2px 10px #23272f13;
-      border: 3px solid #00f6ff;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    #robotwavehand-center:hover {
-      filter: brightness(1.12) drop-shadow(0 2px 24px #3a8cff32);
-      background: #f0f3faee;
-      box-shadow: 0 0 32px 8px #00f6ff88, 0 4px 32px #23272f18;
-      border-color: #fff;
-    }
-    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-    @media (max-width: 900px) {
-      .services-box { max-width: 170px; min-width: 90px; font-size: 13px; padding: 14px 8px; }
-      #robotwavehand-center { min-width: 80px; min-height: 80px; width: 120px; height: 120px; }
-    }
-    <button id="back-services-overlay" class="tech-back-btn back-overlay-pos back-bottom-center">&larr; Back</button>
   </style>
 </head>
 <body>
@@ -140,20 +53,21 @@
         <p>
           Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
           Cimax is where ideas become interfaces, and feelings become flow.<br><br>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital products, or immersive campaigns, I strive to make every pixel purposeful.<br>
+          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, intuitive web experiences, or playful mobile apps, I focus on clarity and connection.<br><br>
           Let’s co-create something meaningful.
         </p>
       </div>
     </div>
-    <button class="tech-back-btn" id="back-about">&larr; Back</button>
+    <button class="tech-back-btn back-bottom-center" id="back-about">&larr; Back</button>
   </div>
+
   <!-- Services Section (legacy, not shown in overlay) -->
   <div id="mywork-section" class="hidden">
     <div class="about-cici-container">
       <div class="about-cici-box">
         <h2>Services</h2>
         <p>
-          Versatile Full-Stack & Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
+          Versatile Full-Stack & Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable backend systems.
         </p>
         <h3>What I Offer</h3>
         <ul>
@@ -169,8 +83,9 @@
         </ul>
       </div>
     </div>
-    <button class="tech-back-btn" id="back-work">&larr; Back</button>
+    <button class="tech-back-btn back-bottom-center" id="back-work">&larr; Back</button>
   </div>
+
   <!-- Contact Section -->
   <div id="contact-section" class="hidden">
     <div class="about-cici-container">
@@ -182,20 +97,20 @@
         </p>
       </div>
     </div>
-    <button class="tech-back-btn" id="back-contact">&larr; Back</button>
+    <button class="tech-back-btn back-bottom-center" id="back-contact">&larr; Back</button>
   </div>
 
   <!-- === Services Flex Overlay === -->
-  <div id="services-flex-overlay">
-    <button id="back-services-overlay" class="tech-back-btn">&larr; Back</button>
+  <div id="services-flex-overlay" class="hidden">
+    <button id="back-services-overlay" class="tech-back-btn back-overlay-pos">&larr; Back</button>
     <div class="services-flex-content">
-      <div class="services-box" id="overlay-left">
+      <div class="services-left" id="overlay-left" style="display:none;">
         <p>
-          Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
+          Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable backend systems.
         </p>
       </div>
       <div id="robotwavehand-center"></div>
-      <div class="services-box" id="overlay-right">
+      <div class="services-right" id="overlay-right" style="display:none;">
         <h3>What I Offer</h3>
         <ul>
           <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
@@ -283,6 +198,7 @@
       hideServicesOverlay();
     }
     function showWork() {
+      // Hide everything except the background and show the overlay
       hideAllExceptBackground();
       showServicesOverlay();
     }
@@ -331,18 +247,17 @@
     const robotCenter = document.getElementById('robotwavehand-center');
     const backOverlayBtn = document.getElementById('back-services-overlay');
 
-    // Start with both left/right hidden
     overlayLeft.style.display = "none";
     overlayRight.style.display = "none";
 
     function showServicesOverlay() {
       overlayLeft.style.display = "none";
       overlayRight.style.display = "none";
-      servicesOverlay.style.display = "flex";
+      servicesOverlay.classList.remove('hidden');
       loadRobotAnim();
     }
     function hideServicesOverlay() {
-      servicesOverlay.style.display = "none";
+      servicesOverlay.classList.add('hidden');
       overlayLeft.style.display = "none";
       overlayRight.style.display = "none";
     }
@@ -358,18 +273,19 @@
     });
     // Esc to close
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && servicesOverlay.style.display === 'flex') {
+      if (e.key === 'Escape' && !servicesOverlay.classList.contains('hidden')) {
         hideServicesOverlay();
         showMain();
       }
     });
+    // Prevent pointer events on the background except when on the overlay boxes or robot
     servicesOverlay.addEventListener('click', function(e) {
+      // Only close if user clicks outside the content flex area
       if (e.target === servicesOverlay) {
         hideServicesOverlay();
         showMain();
       }
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </body>
 </html>

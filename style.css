@@ -1,14 +1,9 @@
-/* ==========================
-   ROOT VARIABLES
-   ========================== */
 :root {
   --card-center-y-pc: 48vh;
   --card-center-y-mob: 42vh;
 }
 
-/* ==========================
-   UTILITY CLASSES
-   ========================== */
+/* =============== UTILITY CLASSES =============== */
 .hidden { display: none !important; }
 .back-bottom-center {
   position: fixed;
@@ -16,6 +11,9 @@
   bottom: 40px;
   transform: translateX(-50%);
   z-index: 3500;
+  margin: 0;
+  width: auto;
+  display: block;
 }
 .back-overlay-pos {
   position: fixed;
@@ -24,9 +22,7 @@
   z-index: 3500;
 }
 
-/* ==========================
-   BODY/BACKGROUND
-   ========================== */
+/* =============== BODY/BACKGROUND =============== */
 body {
   margin: 0;
   padding: 0;
@@ -40,9 +36,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ==========================
-   WELCOME BOX with Glitch + Shake Effect
-   ========================== */
+/* =============== WELCOME BOX =============== */
 .welcomebox {
   position: absolute;
   left: 50%;
@@ -70,8 +64,6 @@ body {
   z-index: 2;
   animation: shake 2s infinite cubic-bezier(.36,.07,.19,.97) both;
 }
-
-/* SHAKE Animation */
 @keyframes shake {
   0% { transform: translate(-50%, -50%) rotate(0deg); }
   10% { transform: translate(-51%, -52%) rotate(-1deg); }
@@ -81,8 +73,6 @@ body {
   50% { transform: translate(-50%, -50%) rotate(0deg); }
   100% { transform: translate(-50%, -50%) rotate(0deg); }
 }
-
-/* GLITCH EFFECT PSEUDO-ELEMENTS */
 .welcomebox::before,
 .welcomebox::after {
   content: "";
@@ -132,8 +122,6 @@ body {
 @keyframes scanlines {
   to { background-position-y: 4px; }
 }
-
-/* WELCOMEBOX INNER GLOW EFFECTS */
 .welcomebox .welcome-line {
   margin: 0;
   font-size: 2.5rem;
@@ -172,9 +160,7 @@ body {
   z-index: 4;
 }
 
-/* ==========================
-   MINDMAP NAVIGATION AROUND WELCOMEBOX
-   ========================== */
+/* =============== MINDMAP NAVIGATION =============== */
 .mindmap-nav {
   position: absolute;
   left: 50%;
@@ -185,8 +171,6 @@ body {
   transform: translate(-50%, -50%);
   z-index: 3;
 }
-
-/* --- TECH/HUD BUTTON STYLE --- */
 .mindmap-btn {
   position: absolute;
   min-width: 128px;
@@ -224,7 +208,6 @@ body {
   opacity: 0.17;
   filter: blur(2.5px);
 }
-/* HUD CORNERS */
 .mindmap-btn .hud-corner {
   position: absolute;
   width: 18px; height: 18px;
@@ -237,7 +220,6 @@ body {
 .mindmap-btn .hud-corner.tr { right: -3px; top: -3px; border-bottom: none; border-left: none; }
 .mindmap-btn .hud-corner.bl { left: -3px; bottom: -3px; border-top: none; border-right: none; }
 .mindmap-btn .hud-corner.br { right: -3px; bottom: -3px; border-top: none; border-left: none; }
-
 .mindmap-btn:hover,
 .mindmap-btn:focus {
   color: #0a1e28;
@@ -253,8 +235,6 @@ body {
   opacity: 0.9;
   box-shadow: 0 0 22px 6px #00f6ff55;
 }
-
-/* Flicker Animation on Hover */
 @keyframes flickerBtn {
   0% { filter: brightness(2) blur(0.5px);}
   30% { filter: brightness(0.5) blur(1.4px);}
@@ -262,16 +242,12 @@ body {
   100% { filter: brightness(1) blur(0px);}
 }
 
-/* ==========================
-   BUTTON POSITIONING
-   ========================== */
+/* Mindmap Button Positions */
 .btn-about   { left: 50%; top: 0; transform: translate(-50%, -70px); }
 .btn-work    { left: 130%; top: 50%; transform: translate(-50%, -50%); }
 .btn-contact { left: -30%;  top: 50%; transform: translate(-50%, -50%); }
 
-/* ==========================
-   GLOWING TECHNOLOGY LINES (ARROWS)
-   ========================== */
+/* Glowing Lines/Arrows */
 .mindmap-btn::after {
   content: "";
   position: absolute;
@@ -313,9 +289,7 @@ body {
   box-shadow: 0 0 12px 2px #01faff88;
 }
 
-/* ==========================
-   CENTERED SECTION MODALS (ABOUT, WORK, CONTACT)
-   ========================== */
+/* =============== SECTION MODALS =============== */
 #about-cici-section,
 #mywork-section,
 #contact-section {
@@ -329,12 +303,10 @@ body {
   left: 0;
   top: 0;
   z-index: 100;
-  background: none; /* change to rgba(0,0,0,0.2) if you want modal effect */
+  background: none;
 }
 
-/* ==========================
-   ABOUT CICI CONTAINER (Techy, Transparent)
-   ========================== */
+/* =============== ABOUT CICI CONTAINER =============== */
 .about-cici-container {
   margin-bottom: 20px;
   background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
@@ -347,10 +319,6 @@ body {
   justify-content: center;
   gap: 28px;
 }
-
-/* ==========================
-   ABOUT IMAGE & BOX
-   ========================== */
 .about-cici-img {
   width: 250px;
   height: 250px;
@@ -359,10 +327,6 @@ body {
   box-shadow: 0 2px 14px #06f4ff33;
   border: 2px solid #06f4ff;
 }
-
-/* ==========================
-   METALLIC SILVER CARD STYLE FOR .about-cici-box (DESKTOP & MOBILE)
-   ========================== */
 .about-cici-box {
   background: linear-gradient(
     135deg,
@@ -410,13 +374,8 @@ body {
   border-radius: 16px;
 }
 
-/* ==========================
-   BACK BUTTON (Techy Style, Centered)
-   ========================== */
+/* =============== BACK BUTTON (Techy Style, Centered) =============== */
 .tech-back-btn {
-  margin: 2rem auto 0 auto;
-  display: block;
-  align-items: center;
   padding: 16px 38px;
   background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
   color: #00f6ff;
@@ -437,6 +396,8 @@ body {
     border-color 0.2s,
     box-shadow 0.22s,
     background 0.25s;
+  margin: 0;
+  display: block;
 }
 .tech-back-btn:hover,
 .tech-back-btn:focus {
@@ -448,9 +409,62 @@ body {
     0 0 0 2px #222 inset;
 }
 
-/* ==========================
-   RESPONSIVE: Adjust button positions on mobile
-   ========================== */
+/* =============== SERVICES FLEX OVERLAY =============== */
+#services-flex-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(20,26,32,0.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.services-flex-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.services-left, .services-right {
+  background: linear-gradient(90deg, rgba(25,30,40,0.38) 85%, #00f6ff22 100%);
+  border-radius: 16px;
+  border: 2.5px solid #00f6ff44;
+  box-shadow: 0 4px 32px #06f4ff15;
+  padding: 28px 24px;
+  color: #fff;
+  min-width: 220px;
+  max-width: 340px;
+  font-size: 1rem;
+}
+
+/* ROBOT ANIMATION ICON SIZE */
+#robotwavehand-center {
+  width: 120px;
+  height: 120px;
+  max-width: 32vw;
+  max-height: 32vw;
+  min-width: 80px;
+  min-height: 80px;
+  margin: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3200;
+  background: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px #23272f13;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 900px) {
+  #robotwavehand-center {
+    width: 80px;
+    height: 80px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
 @media (max-width: 700px) {
   .mindmap-nav {
     width: 96vw;
@@ -470,7 +484,6 @@ body {
     left: 50%; top: 80%;
     transform: translate(-50%, -50%);
   }
-  /* Fix mindmap lines/arrows for mobile layout */
   .btn-about::after,
   .btn-work::after,
   .btn-contact::after {
@@ -481,7 +494,6 @@ body {
     background: linear-gradient(180deg, #01faff 40%, transparent 80%);
     transform: translate(-50%, 0);
   }
-
   #about-cici-section,
   #mywork-section,
   #contact-section {
@@ -500,15 +512,10 @@ body {
     height: 200px;
     margin-bottom: 12px;
   }
-  .tech-back-btn {
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
   .back-bottom-center {
     bottom: 16px;
   }
 }
-
 @media (max-width: 1100px) {
   .welcomebox {
     max-width: 97vw;
@@ -523,7 +530,6 @@ body {
     font-size: 0.99rem;
   }
 }
-
 @media (max-width: 750px) {
   .welcomebox {
     top: var(--card-center-y-mob);
@@ -541,7 +547,6 @@ body {
     font-size: 0.83rem;
   }
 }
-
 @media (max-width: 600px) {
   .about-cici-img {
     width: 140px;

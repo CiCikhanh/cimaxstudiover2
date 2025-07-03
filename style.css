@@ -539,7 +539,7 @@ body {
 /* ==========================
    services:back button
    ========================== */
- .back-bottom-center {
+.back-bottom-center {
   position: fixed;
   left: 50%;
   bottom: 40px;    /* Distance from the bottom edge */

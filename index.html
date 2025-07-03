@@ -5,62 +5,90 @@
   <title>Cimax Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#23272f">
-  <!-- Orbitron font for tech/AI style -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     .hidden { display: none !important; }
-    /* New: Flex layout for services overlay */
+
+    /* Overlay backdrop, transparent to keep background visible, but dimmed */
     #services-flex-overlay {
       display: none;
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      background: #fff;
+      background: rgba(32,32,35,0.45); /* semi-transparent dark overlay */
       z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .services-flex-content {
+      display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none; /* allow background clicks unless on a box or icon */
     }
     .services-left, .services-right {
-      width: 340px;
-      min-width: 220px;
       max-width: 400px;
-      background: #f0f3fa;
-      margin: 0 32px;
-      padding: 32px 20px;
-      border-radius: 18px;
-      box-shadow: 2px 0 24px #0001;
+      min-width: 260px;
+      margin: 0 24px;
+      pointer-events: auto;
+      /* Use the old .about-cici-box style (silver, rounded, shadow) */
+      background: linear-gradient(135deg,#e4e7ec 60%,#f8fafd 100%);
+      border-radius: 24px;
+      box-shadow: 0 4px 32px #23272f14, 0 1.5px 8px #23272f11;
+      padding: 36px 30px;
+      color: #23272f;
+      font-family: inherit;
       display: none;
       animation: fadeIn 0.4s;
     }
-    .services-right {
-      background: #faf0f0;
-      box-shadow: -2px 0 24px #0001;
-    }
     #robotwavehand-center {
-      width: 280px;
-      height: 280px;
+      width: 220px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: auto;
       cursor: pointer;
-      margin: 0 48px;
+      margin: 0 32px;
       animation: fadeIn 0.6s;
       z-index: 3200;
+      background: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px #23272f13;
     }
     #robotwavehand-center:hover {
-      filter: brightness(1.08) drop-shadow(0 2px 24px #3a8cff30);
+      filter: brightness(1.12) drop-shadow(0 2px 24px #3a8cff32);
+      background: #f0f3fa;
     }
     @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
     @media (max-width: 900px) {
-      .services-left, .services-right { width: 160px; padding: 12px 4px; font-size: 13px; }
+      .services-left, .services-right { 
+        max-width: 170px; min-width: 90px; padding: 12px 6px; font-size: 13px; 
+      }
       #robotwavehand-center { min-width: 80px; min-height: 80px; width: 120px; height: 120px; }
     }
-    body.services-active {
-      overflow: hidden !important;
+    #close-services-overlay {
+      position: fixed;
+      top: 24px;
+      right: 36px;
+      z-index: 3500;
+      padding: 6px 18px;
+      background: #e4e7ec;
+      color: #23272f;
+      border-radius: 8px;
+      font-size: 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #23272f10;
+      pointer-events: auto;
     }
+    #close-services-overlay:hover { background: #d5d9e1; }
   </style>
 </head>
 <body>
@@ -151,27 +179,29 @@
 
   <!-- === Services Flex Overlay === -->
   <div id="services-flex-overlay">
-    <div class="services-left" id="overlay-left">
-      <p>
-        Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
-      </p>
+    <div class="services-flex-content">
+      <div class="services-left" id="overlay-left">
+        <p>
+          Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
+        </p>
+      </div>
+      <div id="robotwavehand-center"></div>
+      <div class="services-right" id="overlay-right">
+        <h3>What I Offer</h3>
+        <ul>
+          <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
+          <li><strong>iOS &amp; Android Apps:</strong> (Flutter)</li>
+          <li><strong>Consultancy &amp; Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
+        </ul>
+        <h3>Key Strengths</h3>
+        <ul>
+          <li>API design</li>
+          <li>Performance optimization</li>
+          <li>UX/UI integration</li>
+        </ul>
+      </div>
     </div>
-    <div id="robotwavehand-center"></div>
-    <div class="services-right" id="overlay-right">
-      <h3>What I Offer</h3>
-      <ul>
-        <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
-        <li><strong>iOS &amp; Android Apps:</strong> (Flutter)</li>
-        <li><strong>Consultancy &amp; Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
-      </ul>
-      <h3>Key Strengths</h3>
-      <ul>
-        <li>API design</li>
-        <li>Performance optimization</li>
-        <li>UX/UI integration</li>
-      </ul>
-    </div>
-    <button style="position:fixed;top:20px;right:30px;z-index:3500;" id="close-services-overlay" class="tech-back-btn">&times; Close</button>
+    <button id="close-services-overlay" class="tech-back-btn">&times; Close</button>
   </div>
 
   <!-- Audio for Welcome Box Click -->
@@ -238,7 +268,6 @@
       hideServicesOverlay();
     }
     function showWork() {
-      // Instead of showing workSection, show overlay
       showServicesOverlay();
     }
     function showContact() {
@@ -267,7 +296,6 @@
     document.getElementById('back-contact').addEventListener('click', showMain);
 
     // === SERVICES FLEX OVERLAY LOGIC ===
-    // Lottie animation setup
     let robotAnimLoaded = false;
     function loadRobotAnim() {
       if (robotAnimLoaded) return;
@@ -286,19 +314,14 @@
     const overlayRight = document.getElementById('overlay-right');
     const robotCenter = document.getElementById('robotwavehand-center');
     const closeOverlayBtn = document.getElementById('close-services-overlay');
+    const overlayFlex = document.querySelector('.services-flex-content');
 
     // Start with both left/right hidden
     overlayLeft.style.display = "none";
     overlayRight.style.display = "none";
 
     function showServicesOverlay() {
-      document.body.classList.add('services-active');
-      // Hide all main sections
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
+      // Don't hide main content, just add overlay on top
       overlayLeft.style.display = "none";
       overlayRight.style.display = "none";
       servicesOverlay.style.display = "flex";
@@ -308,7 +331,6 @@
       servicesOverlay.style.display = "none";
       overlayLeft.style.display = "none";
       overlayRight.style.display = "none";
-      document.body.classList.remove('services-active');
     }
     // Robot icon click: reveal left and right
     robotCenter.addEventListener('click', function() {
@@ -318,17 +340,17 @@
     // Close overlay
     closeOverlayBtn.addEventListener('click', function() {
       hideServicesOverlay();
-      // Restore main UI
-      document.querySelector('.welcomebox').classList.remove('hidden');
-      mainNav.classList.remove('hidden');
     });
     // Esc to close
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && servicesOverlay.style.display === 'flex') {
         hideServicesOverlay();
-        document.querySelector('.welcomebox').classList.remove('hidden');
-        mainNav.classList.remove('hidden');
       }
+    });
+    // Prevent pointer events on the background except when on the overlay boxes or robot
+    servicesOverlay.addEventListener('click', function(e) {
+      // Only close if user clicks outside the content flex area
+      if (e.target === servicesOverlay) hideServicesOverlay();
     });
   </script>
 </body>

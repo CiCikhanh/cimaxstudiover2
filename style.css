@@ -324,7 +324,12 @@ body {
   z-index: 100;
   background: none; /* change to rgba(0,0,0,0.2) if you want modal effect */
 }
-
+.back-overlay-pos {
+  position: fixed;
+  top: 24px;
+  left: 36px;
+  z-index: 3500;
+}
 /* ==========================
    ABOUT CICI CONTAINER (Techy, Transparent)
    ========================== */

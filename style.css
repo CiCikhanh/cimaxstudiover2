@@ -536,11 +536,19 @@ body {
     width: 140px;
     height: 140px;
   }
+/* ==========================
+   services:back button
+   ========================== */
  .back-bottom-center {
   position: fixed;
   left: 50%;
   bottom: 40px;    /* Distance from the bottom edge */
   transform: translateX(-50%);
   z-index: 3500;   /* Ensure it's above overlays */
+}
+@media (max-width: 600px) {
+  .back-bottom-center {
+    bottom: 16px;
+  }
 }
 }

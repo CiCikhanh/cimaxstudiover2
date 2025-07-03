@@ -10,6 +10,57 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .hidden { display: none !important; }
+    /* New: Flex layout for services overlay */
+    #services-flex-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 3000;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+    .services-left, .services-right {
+      width: 340px;
+      min-width: 220px;
+      max-width: 400px;
+      background: #f0f3fa;
+      margin: 0 32px;
+      padding: 32px 20px;
+      border-radius: 18px;
+      box-shadow: 2px 0 24px #0001;
+      display: none;
+      animation: fadeIn 0.4s;
+    }
+    .services-right {
+      background: #faf0f0;
+      box-shadow: -2px 0 24px #0001;
+    }
+    #robotwavehand-center {
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 48px;
+      animation: fadeIn 0.6s;
+      z-index: 3200;
+    }
+    #robotwavehand-center:hover {
+      filter: brightness(1.08) drop-shadow(0 2px 24px #3a8cff30);
+    }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @media (max-width: 900px) {
+      .services-left, .services-right { width: 160px; padding: 12px 4px; font-size: 13px; }
+      #robotwavehand-center { min-width: 80px; min-height: 80px; width: 120px; height: 120px; }
+    }
+    body.services-active {
+      overflow: hidden !important;
+    }
   </style>
 </head>
 <body>
@@ -53,14 +104,14 @@
         <p>
           Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
           Cimax is where ideas become interfaces, and feelings become flow.<br><br>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital platforms, or immersive apps, I strive to make every pixel purposeful and every interaction intuitive.<br><br>
+          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital products, or immersive campaigns, I strive to make every pixel purposeful.<br>
           Let’s co-create something meaningful.
         </p>
       </div>
     </div>
     <button class="tech-back-btn" id="back-about">&larr; Back</button>
   </div>
-  <!-- Services Section -->
+  <!-- Services Section (legacy, not shown in overlay) -->
   <div id="mywork-section" class="hidden">
     <div class="about-cici-container">
       <div class="about-cici-box">
@@ -98,11 +149,36 @@
     <button class="tech-back-btn" id="back-contact">&larr; Back</button>
   </div>
 
+  <!-- === Services Flex Overlay === -->
+  <div id="services-flex-overlay">
+    <div class="services-left" id="overlay-left">
+      <p>
+        Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
+      </p>
+    </div>
+    <div id="robotwavehand-center"></div>
+    <div class="services-right" id="overlay-right">
+      <h3>What I Offer</h3>
+      <ul>
+        <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
+        <li><strong>iOS &amp; Android Apps:</strong> (Flutter)</li>
+        <li><strong>Consultancy &amp; Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
+      </ul>
+      <h3>Key Strengths</h3>
+      <ul>
+        <li>API design</li>
+        <li>Performance optimization</li>
+        <li>UX/UI integration</li>
+      </ul>
+    </div>
+    <button style="position:fixed;top:20px;right:30px;z-index:3500;" id="close-services-overlay" class="tech-back-btn">&times; Close</button>
+  </div>
+
   <!-- Audio for Welcome Box Click -->
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
   
-  <!-- JavaScript for Sound and Section Toggle -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script>
     // Sound for welcome box
     const welcomeBox = document.querySelector('.welcomebox');
@@ -151,6 +227,7 @@
       aboutSection.classList.add('hidden');
       workSection.classList.add('hidden');
       contactSection.classList.add('hidden');
+      hideServicesOverlay();
     }
     function showAbout() {
       document.querySelector('.welcomebox').classList.add('hidden');
@@ -158,13 +235,11 @@
       aboutSection.classList.remove('hidden');
       workSection.classList.add('hidden');
       contactSection.classList.add('hidden');
+      hideServicesOverlay();
     }
     function showWork() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.remove('hidden');
-      contactSection.classList.add('hidden');
+      // Instead of showing workSection, show overlay
+      showServicesOverlay();
     }
     function showContact() {
       document.querySelector('.welcomebox').classList.add('hidden');
@@ -172,6 +247,7 @@
       aboutSection.classList.add('hidden');
       workSection.classList.add('hidden');
       contactSection.classList.remove('hidden');
+      hideServicesOverlay();
     }
 
     document.querySelector('.btn-about').addEventListener('click', function(e) {
@@ -189,6 +265,71 @@
     document.getElementById('back-about').addEventListener('click', showMain);
     document.getElementById('back-work').addEventListener('click', showMain);
     document.getElementById('back-contact').addEventListener('click', showMain);
+
+    // === SERVICES FLEX OVERLAY LOGIC ===
+    // Lottie animation setup
+    let robotAnimLoaded = false;
+    function loadRobotAnim() {
+      if (robotAnimLoaded) return;
+      lottie.loadAnimation({
+        container: document.getElementById('robotwavehand-center'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'animations/robotwavehand.json'
+      });
+      robotAnimLoaded = true;
+    }
+
+    const servicesOverlay = document.getElementById('services-flex-overlay');
+    const overlayLeft = document.getElementById('overlay-left');
+    const overlayRight = document.getElementById('overlay-right');
+    const robotCenter = document.getElementById('robotwavehand-center');
+    const closeOverlayBtn = document.getElementById('close-services-overlay');
+
+    // Start with both left/right hidden
+    overlayLeft.style.display = "none";
+    overlayRight.style.display = "none";
+
+    function showServicesOverlay() {
+      document.body.classList.add('services-active');
+      // Hide all main sections
+      document.querySelector('.welcomebox').classList.add('hidden');
+      mainNav.classList.add('hidden');
+      aboutSection.classList.add('hidden');
+      workSection.classList.add('hidden');
+      contactSection.classList.add('hidden');
+      overlayLeft.style.display = "none";
+      overlayRight.style.display = "none";
+      servicesOverlay.style.display = "flex";
+      loadRobotAnim();
+    }
+    function hideServicesOverlay() {
+      servicesOverlay.style.display = "none";
+      overlayLeft.style.display = "none";
+      overlayRight.style.display = "none";
+      document.body.classList.remove('services-active');
+    }
+    // Robot icon click: reveal left and right
+    robotCenter.addEventListener('click', function() {
+      overlayLeft.style.display = "block";
+      overlayRight.style.display = "block";
+    });
+    // Close overlay
+    closeOverlayBtn.addEventListener('click', function() {
+      hideServicesOverlay();
+      // Restore main UI
+      document.querySelector('.welcomebox').classList.remove('hidden');
+      mainNav.classList.remove('hidden');
+    });
+    // Esc to close
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && servicesOverlay.style.display === 'flex') {
+        hideServicesOverlay();
+        document.querySelector('.welcomebox').classList.remove('hidden');
+        mainNav.classList.remove('hidden');
+      }
+    });
   </script>
 </body>
 </html>

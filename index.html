@@ -32,49 +32,70 @@
       width: 100vw;
       height: 100vh;
     }
-    /* --------- Custom Silver-Glass Content Box Style --------- */
-    .services-content-box {
-      max-width: 800px;
-      min-width: 320px;
+    /* --- Silver Gradient, Transparent Frame (Left & Right Boxes) --- */
+    .services-box {
+      max-width: 400px;
+      min-width: 260px;
+      margin: 0 24px;
       padding: 38px 32px 34px 32px;
       color: #23272f;
-      font-size: 1.32rem;
+      font-size: 1.19rem;
       font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
-      background: 
-        linear-gradient(135deg, #f2f5f6 60%, #e2e4e7 100%) padding-box,
-        linear-gradient(135deg, #00f6ff 3%, #b7e6ff 30%, #fff 55%, #00f6ff 100%) border-box;
-      border: 3px solid transparent;
-      border-radius: 24px;
-      box-shadow:
-        0 4px 32px #23272f18,
-        0 1.5px 8px #23272f12,
-        0 0 0 3px #b7e6ff88,
-        0 0 24px 4px #00f6ff44;
+      background: linear-gradient(135deg, #f2f5f6 60%, #e2e4e7 100%);
+      border-radius: 20px;
+      border: 3px solid rgba(0,246,255,0.14);
+      box-shadow: 0 8px 32px #23272f1c, 0 1.5px 8px #23272f12;
       position: relative;
       text-align: center;
-      margin: 0 auto;
       transition: box-shadow 0.2s;
       backdrop-filter: blur(0.5px);
+      /* Subtle outside glow for tech effect */
+      outline: 2.5px solid rgba(0,246,255,0.20);
+      outline-offset: 0px;
     }
-    .services-content-box::before {
+    .services-box::before {
       content: "";
       position: absolute;
-      inset: -3px;
-      border-radius: 27px;
+      inset: 0;
+      border-radius: 20px;
+      border: 2.5px solid rgba(0,246,255,0.16);
       pointer-events: none;
       z-index: 1;
-      background: linear-gradient(135deg, #00f6ff88 0%, #b7e6ff66 40%, #fff0 80%, #00f6ff77 100%);
-      opacity: 0.60;
-      filter: blur(2px);
-      transition: opacity 0.2s;
+      background: none;
     }
-    .services-content-box:hover::before {
-      opacity: 0.9;
-      filter: blur(1.1px) brightness(1.08);
+    .services-box:hover, .services-box:focus {
+      box-shadow: 0 0 48px 6px #00f6ff55, 0 4px 32px #23272f1c;
+      outline-color: #00f6ff;
     }
-    /* --------- End Content Box Style --------- */
+    /* --- End Silver Box --- */
 
-    /* Back Button matches main nav buttons */
+    #robotwavehand-center {
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 32px;
+      animation: fadeIn 0.6s;
+      z-index: 3200;
+      background: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 24px #00f6ff44, 0 2px 10px #23272f13;
+      border: 3px solid #00f6ff;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    #robotwavehand-center:hover {
+      filter: brightness(1.12) drop-shadow(0 2px 24px #3a8cff32);
+      background: #f0f3faee;
+      box-shadow: 0 0 32px 8px #00f6ff88, 0 4px 32px #23272f18;
+      border-color: #fff;
+    }
+    @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+    @media (max-width: 900px) {
+      .services-box { max-width: 170px; min-width: 90px; font-size: 13px; padding: 14px 8px; }
+      #robotwavehand-center { min-width: 80px; min-height: 80px; width: 120px; height: 120px; }
+    }
     #back-services-overlay {
       position: fixed;
       top: 28px;
@@ -101,10 +122,6 @@
       color: #0a3c53;
       box-shadow: 0 2px 24px #00f6ff66, 0 2px 10px #23272f13;
       border-bottom: 3px solid #00f6ff;
-    }
-    @media (max-width: 900px) {
-      .services-content-box { font-size: 1rem; padding: 18px 7px 16px 7px; }
-      #back-services-overlay { font-size: 1em; top: 10px; left: 10px; padding: 7px 13px;}
     }
   </style>
 </head>
@@ -198,15 +215,25 @@
   <div id="services-flex-overlay">
     <button id="back-services-overlay" class="tech-back-btn">&larr; Back</button>
     <div class="services-flex-content">
-      <div class="services-content-box" id="overlay-content">
+      <div class="services-box" id="overlay-left">
         <p>
-          Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
-          Cimax is where ideas become interfaces, and feelings become flow.
+          Versatile Full-Stack &amp; Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
         </p>
-        <p>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital products, or immersive campaigns, I strive to make every pixel purposeful.<br>
-          Let’s co-create something meaningful.
-        </p>
+      </div>
+      <div id="robotwavehand-center"></div>
+      <div class="services-box" id="overlay-right">
+        <h3>What I Offer</h3>
+        <ul>
+          <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
+          <li><strong>iOS &amp; Android Apps:</strong> (Flutter)</li>
+          <li><strong>Consultancy &amp; Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
+        </ul>
+        <h3>Key Strengths</h3>
+        <ul>
+          <li>API design</li>
+          <li>Performance optimization</li>
+          <li>UX/UI integration</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -215,6 +242,7 @@
   <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
   <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script>
     // Sound for welcome box
     const welcomeBox = document.querySelector('.welcomebox');
@@ -310,19 +338,51 @@
     document.getElementById('back-contact').addEventListener('click', showMain);
 
     // === SERVICES FLEX OVERLAY LOGIC ===
+    let robotAnimLoaded = false;
+    function loadRobotAnim() {
+      if (robotAnimLoaded) return;
+      lottie.loadAnimation({
+        container: document.getElementById('robotwavehand-center'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'animations/robotwavehand.json'
+      });
+      robotAnimLoaded = true;
+    }
+
     const servicesOverlay = document.getElementById('services-flex-overlay');
+    const overlayLeft = document.getElementById('overlay-left');
+    const overlayRight = document.getElementById('overlay-right');
+    const robotCenter = document.getElementById('robotwavehand-center');
     const backOverlayBtn = document.getElementById('back-services-overlay');
 
+    // Start with both left/right hidden
+    overlayLeft.style.display = "none";
+    overlayRight.style.display = "none";
+
     function showServicesOverlay() {
+      overlayLeft.style.display = "none";
+      overlayRight.style.display = "none";
       servicesOverlay.style.display = "flex";
+      loadRobotAnim();
     }
     function hideServicesOverlay() {
       servicesOverlay.style.display = "none";
+      overlayLeft.style.display = "none";
+      overlayRight.style.display = "none";
     }
+    // Robot icon click: reveal left and right
+    robotCenter.addEventListener('click', function() {
+      overlayLeft.style.display = "block";
+      overlayRight.style.display = "block";
+    });
+    // Back button
     backOverlayBtn.addEventListener('click', function() {
       hideServicesOverlay();
       showMain();
     });
+    // Esc to close
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && servicesOverlay.style.display === 'flex') {
         hideServicesOverlay();
@@ -336,5 +396,6 @@
       }
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 </body>
 </html>

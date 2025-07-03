@@ -1,194 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cimax Studio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#23272f">
-  <!-- Orbitron font for tech/AI style -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Services Layout with Robot Animation</title>
+  <meta name="viewport" content="width=800, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <style>
-    .hidden { display: none !important; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+    #services-btn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 2001;
+      padding: 10px 18px;
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 2px 8px #0001;
+    }
+    #services-layout {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 2000;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    #mywork-section, #right-section {
+      width: 340px;
+      min-width: 260px;
+      max-width: 420px;
+      background: #f0f3fa;
+      margin: 0;
+      padding: 40px 32px;
+      display: none;
+      box-shadow: 2px 0 24px #0001;
+      border-radius: 0 24px 24px 0;
+    }
+    #right-section {
+      border-radius: 24px 0 0 24px;
+      box-shadow: -2px 0 24px #0001;
+      background: #faf0f0;
+    }
+    #robotwavehand-animation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 0%;
+      min-width: 300px;
+      min-height: 100vh;
+      cursor: pointer;
+      z-index: 2100;
+      transition: filter 0.2s;
+    }
+    #robotwavehand-animation:hover {
+      filter: brightness(1.08) drop-shadow(0 2px 12px #3a8cff30);
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      #mywork-section, #right-section { width: 180px; padding: 20px 10px; font-size: 13px;}
+      #robotwavehand-animation { min-width: 140px;}
+    }
   </style>
 </head>
 <body>
-  <!-- Mindmap Navigation -->
-  <div class="mindmap-nav">
-    <a href="#about" class="mindmap-btn btn-about">
-      About CiCi
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-    <a href="#services" class="mindmap-btn btn-work">
-      Services
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-    <a href="#contact" class="mindmap-btn btn-contact">
-      Contact
-      <span class="hud-corner tl"></span>
-      <span class="hud-corner tr"></span>
-      <span class="hud-corner bl"></span>
-      <span class="hud-corner br"></span>
-    </a>
-  </div>
-  
-  <!-- Welcome Box -->
-  <div class="welcomebox">
-    <div class="welcome-line">Welcome to</div>
-    <div class="studio-line">CIMAX Studio</div>
-    <div class="quote">Ideas become interfaces. Feelings become flow.</div>
-  </div>
-  
-  <!-- About Section -->
-  <div id="about-cici-section" class="hidden">
-    <div class="about-cici-container">
-      <img class="about-cici-img" src="pictures/profile webpic.jpeg" alt="CiCi's photo" />
-      <div class="about-cici-box">
-        <p>
-          Hi, I’m CiCi — the creative mind behind Cimax Studio.<br>
-          Cimax is where ideas become interfaces, and feelings become flow.<br><br>
-          I’m passionate about turning vision into visual — blending technology, storytelling, and soulful design to create digital experiences that speak. Whether it’s crafting personal brands, digital platforms, or immersive apps, I strive to make every pixel purposeful and every interaction intuitive.<br><br>
-          Let’s co-create something meaningful.
-        </p>
-      </div>
+  <button id="services-btn">Services</button>
+  <div id="services-layout">
+    <div id="mywork-section">
+      <h2>My Work</h2>
+      <ul>
+        <li>Project A - Frontend</li>
+        <li>Project B - Backend</li>
+        <li>Project C - Animation</li>
+      </ul>
     </div>
-    <button class="tech-back-btn" id="back-about">&larr; Back</button>
-  </div>
-  <!-- Services Section -->
-  <div id="mywork-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box">
-        <h2>Services</h2>
-        <p>
-          Versatile Full-Stack & Mobile Developer with expertise in web, iOS, and Android platforms. I architect and build end-to-end solutions—from front‑end user interfaces and APIs to scalable back‑end systems and mobile apps. Additionally, I’ve advised publishing houses and startups on platform strategy and helped them establish a strong digital presence. I thrive in solving complex problems and delivering products that delight users and drive business results.
-        </p>
-        <h3>What I Offer</h3>
-        <ul>
-          <li><strong>Full-Stack Web Development:</strong> (HTML, CSS, Java)</li>
-          <li><strong>iOS & Android Apps:</strong> (Flutter)</li>
-          <li><strong>Consultancy & Advisory:</strong> Company profiles, publishing workflows, digital strategy</li>
-        </ul>
-        <h3>Key Strengths</h3>
-        <ul>
-          <li>API design</li>
-          <li>Performance optimization</li>
-          <li>UX/UI integration</li>
-        </ul>
-      </div>
+    <div id="robotwavehand-animation"></div>
+    <div id="right-section">
+      <h2>Coming Soon</h2>
+      <p>Another session box for your next feature!</p>
     </div>
-    <button class="tech-back-btn" id="back-work">&larr; Back</button>
   </div>
-  <!-- Contact Section -->
-  <div id="contact-section" class="hidden">
-    <div class="about-cici-container">
-      <div class="about-cici-box">
-        <h2>Contact</h2>
-        <p>
-          Email: <a href="mailto:your@email.com" style="color:#00f6ff">your@email.com</a><br>
-          LinkedIn: <a href="#" style="color:#00f6ff">your-linkedin</a>
-        </p>
-      </div>
-    </div>
-    <button class="tech-back-btn" id="back-contact">&larr; Back</button>
-  </div>
-
-  <!-- Audio for Welcome Box Click -->
-  <audio id="welcome-sound" src="sounds/welcome.mp3" preload="auto"></audio>
-  <audio id="button-sound" src="sounds/button.mp3" preload="auto"></audio>
-  
-  <!-- JavaScript for Sound and Section Toggle -->
   <script>
-    // Sound for welcome box
-    const welcomeBox = document.querySelector('.welcomebox');
-    const welcomeSound = document.getElementById('welcome-sound');
-    if (welcomeBox && welcomeSound) {
-      welcomeBox.addEventListener('click', () => {
-        if (welcomeSound.paused || welcomeSound.ended) {
-          welcomeSound.currentTime = 0;
-          welcomeSound.play();
-        } else {
-          welcomeSound.pause();
-          welcomeSound.currentTime = 0;
+    document.addEventListener('DOMContentLoaded', function() {
+      // Lottie animation
+      lottie.loadAnimation({
+        container: document.getElementById('robotwavehand-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'animations/robotwavehand.json'
+      });
+
+      const servicesBtn = document.getElementById('services-btn');
+      const myworkSection = document.getElementById('mywork-section');
+      const rightSection = document.getElementById('right-section');
+      const robotAnimation = document.getElementById('robotwavehand-animation');
+      const layout = document.getElementById('services-layout');
+
+      let myworkVisible = false;
+
+      // On "Services" click: Show layout, show animation only, hide session boxes
+      servicesBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        layout.style.display = 'flex';
+        myworkSection.style.display = 'none';
+        rightSection.style.display = 'none';
+        myworkVisible = false;
+      });
+
+      // On robot icon click: Show left session (again), keep icon always centered
+      robotAnimation.addEventListener('click', function() {
+        myworkSection.style.display = 'block';
+        myworkVisible = true;
+        // To show the right section, uncomment next line:
+        // rightSection.style.display = 'block';
+      });
+
+      // (Optional) Hide layout when clicking outside, or Esc
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && layout.style.display === 'flex') {
+          layout.style.display = 'none';
+          myworkSection.style.display = 'none';
+          rightSection.style.display = 'none';
+          myworkVisible = false;
         }
       });
-    }
-    // Sound for nav and back buttons
-    const mindmapButtons = document.querySelectorAll('.mindmap-btn');
-    const backButtons = document.querySelectorAll('.tech-back-btn');
-    const buttonSound = document.getElementById('button-sound');
-    mindmapButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (buttonSound) {
-          buttonSound.currentTime = 0;
-          buttonSound.play();
-        }
-      });
     });
-    backButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        if (buttonSound) {
-          buttonSound.currentTime = 0;
-          buttonSound.play();
-        }
-      });
-    });
-
-    // Section toggling
-    const mainNav = document.querySelector('.mindmap-nav');
-    const aboutSection = document.getElementById('about-cici-section');
-    const workSection = document.getElementById('mywork-section');
-    const contactSection = document.getElementById('contact-section');
-
-    function showMain() {
-      document.querySelector('.welcomebox').classList.remove('hidden');
-      mainNav.classList.remove('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showAbout() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.remove('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showWork() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.remove('hidden');
-      contactSection.classList.add('hidden');
-    }
-    function showContact() {
-      document.querySelector('.welcomebox').classList.add('hidden');
-      mainNav.classList.add('hidden');
-      aboutSection.classList.add('hidden');
-      workSection.classList.add('hidden');
-      contactSection.classList.remove('hidden');
-    }
-
-    document.querySelector('.btn-about').addEventListener('click', function(e) {
-      e.preventDefault();
-      showAbout();
-    });
-    document.querySelector('.btn-work').addEventListener('click', function(e) {
-      e.preventDefault();
-      showWork();
-    });
-    document.querySelector('.btn-contact').addEventListener('click', function(e) {
-      e.preventDefault();
-      showContact();
-    });
-    document.getElementById('back-about').addEventListener('click', showMain);
-    document.getElementById('back-work').addEventListener('click', showMain);
-    document.getElementById('back-contact').addEventListener('click', showMain);
   </script>
 </body>
 </html>

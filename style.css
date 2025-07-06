@@ -446,6 +446,7 @@ body {
   min-width: 80px;
   min-height: 80px;
   margin: 0 32px;
+  margin-bottom: 55%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -453,7 +454,7 @@ body {
   z-index: 3200;
   background: none;
   border-radius: 50%;
-  box-shadow: 0 2px 10px #23272f13;
+  box-shadow: none;
 }
 
 /* =============== RESPONSIVE =============== */
